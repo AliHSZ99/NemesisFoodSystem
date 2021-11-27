@@ -46,15 +46,8 @@
   <div class="blue-box">
     <center> 
       <h1 class="PageHeader">Shopping Page<input type="text" placeholder="Search.." type="searchBar"></h1>
-      <a href="<?=BASE?>User/addShoppingItem"><img src="http://s3.amazonaws.com/pix.iemoji.com/images/emoji/apple/ios-12/256/heavy-plus-sign.png" width="5%" height="5%"> </a>
-<!--             <form action='' method='post'>
-              Item Type<input type='text' name='item_type' /><br><br>
-              Item Name: <input type='text' name='item_name' /><br>
-              Item Description: <input type='text' name='item_description' /><br>
-              Item Price: <input type='number' name='item_price' /><br>
-              Item Quanity: <input type='number' name='item_quantity' /><br>
-              <input type='submit' name='action' value='Create' />
-            </form> -->
+      <a href="<?=BASE?>Item/addShoppingItem">
+      <img src="http://s3.amazonaws.com/pix.iemoji.com/images/emoji/apple/ios-12/256/heavy-plus-sign.png" width="2%" height="5%"></a>
           </center>
         </div>
 

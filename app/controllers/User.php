@@ -8,7 +8,6 @@ class User extends \app\core\Controller {
     // go to customer index.
     #[\app\filters\Admin]
     public function customerIndex() {
-
         $this->view("Customer/index");
     }
     
@@ -53,10 +52,5 @@ class User extends \app\core\Controller {
     public function customers() {
         $this->view("Admin/customers");
     }
-
-    // go to add Shopping activity
-    #[\app\filters\Customer]
-    public function index() {
-        $this->view("Admin/addShoppingItem");
-    }
+    
 }

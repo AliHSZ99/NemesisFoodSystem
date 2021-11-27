@@ -4,15 +4,15 @@ namespace app\models;
 
 class Item extends \app\core\Model {
 
-    public $item_id;
-    public $type;
-    public $item_name;
-    public $item_description;
-    public $item_price;
-    public $item_quantity;
-    public $goal;
-    public $vote_count;
-    public $timestamp;
+    public static $item_id;
+    public String $item_type;
+    public String $item_name;
+    public String $item_description;
+    public int $item_price;
+    public int $item_quantity;
+    public int $goal;
+    public int $vote_count;
+    public date $timestamp;
 
     public function __construct(){
         parent::__construct();
@@ -20,9 +20,9 @@ class Item extends \app\core\Model {
     }
     
     public function insertItem() {
-        $SQL = 'INSERT INTO ITEM VALUES (DEFAULT,:type,:item_name,:item_description,:item_price,:item_quantity,DEFAULT,DEFAULT,DEFAULT)';
+        $SQL = 'INSERT INTO ITEM VALUES (DEFAULT,:item_type,:item_name,:item_description,:item_price,:item_quantity,DEFAULT,DEFAULT,DEFAULT)';
         $STMT = self::$_connection->prepare($SQL);
-        $STMT->execute(['type'=>$this->type,'item_name'=>$this->item_name,'item_description'=>$this->item_description,'item_price'=>$this->item_price,'item_quantity'=>$this->item_quantity]);
+        $STMT->execute(['item_type'=>$this->item_type,'item_name'=>$this->item_name,'item_description'=>$this->item_description,'item_price'=>$this->item_price,'item_quantity'=>$this->item_quantity]);
 
     }
 
@@ -35,19 +35,21 @@ class Item extends \app\core\Model {
     }
 
     public function getDiscardedItems() {
-        $SQL = 'SELECT * FROM Item where type = :type';
+        $SQL = 'SELECT * FROM Item where item_type = :item_type';
         $STMT = self::$_connection->prepare($SQL);
-        $STMT->execute(['type'=>'Discard']);
+        $STMT->execute(['item_type'=>'Discard']);
         $STMT->setFetchMode(\PDO::FETCH_CLASS,'app\\models\\Item');
         return $STMT->fetchAll();
     }
 
     public function getShoppingItems($item_name) {
-        $SQL = 'SELECT * FROM Item where type = :type';
+        $SQL = 'SELECT * FROM Item where item_type = :item_type';
         $STMT = self::$_connection->prepare($SQL);
-        $STMT->execute(['type'=>'Shopping']);
+        $STMT->execute(['item_type'=>'Shopping']);
         $STMT->setFetchMode(\PDO::FETCH_CLASS,'app\\models\\Item');
         return $STMT->fetchAll();
     }
+
+
 
 }
