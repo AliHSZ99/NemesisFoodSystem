@@ -19,7 +19,7 @@ class Item extends \app\core\Model {
         self::$item_id += 1;
     }
     
-    public function insertItem() {
+    public function insertShoppingItem() {
         $SQL = 'INSERT INTO ITEM VALUES (DEFAULT,:item_type,:item_name,:item_description,:item_price,:item_quantity,DEFAULT,DEFAULT,DEFAULT)';
         $STMT = self::$_connection->prepare($SQL);
         $STMT->execute(['item_type'=>$this->item_type,'item_name'=>$this->item_name,'item_description'=>$this->item_description,'item_price'=>$this->item_price,'item_quantity'=>$this->item_quantity]);
@@ -35,21 +35,17 @@ class Item extends \app\core\Model {
     }
 
     public function getDiscardedItems() {
-        $SQL = 'SELECT * FROM Item where item_type = :item_type';
-        $STMT = self::$_connection->prepare($SQL);
-        $STMT->execute(['item_type'=>'Discard']);
+        $SQL = 'SELECT * FROM Item where item_type = \"discard\";';
+        $STMT = self::$_connection->query($SQL);
         $STMT->setFetchMode(\PDO::FETCH_CLASS,'app\\models\\Item');
         return $STMT->fetchAll();
     }
 
-    public function getShoppingItems($item_name) {
-        $SQL = 'SELECT * FROM Item where item_type = :item_type';
-        $STMT = self::$_connection->prepare($SQL);
-        $STMT->execute(['item_type'=>'Shopping']);
+    public function getShoppingItems() {
+        $SQL = 'SELECT * FROM Item where item_type = shopping';
+        $STMT = self::$_connection->query($SQL);
         $STMT->setFetchMode(\PDO::FETCH_CLASS,'app\\models\\Item');
         return $STMT->fetchAll();
     }
-
-
 
 }

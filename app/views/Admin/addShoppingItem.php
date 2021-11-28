@@ -23,7 +23,7 @@
 				<hr class="admin-hr">
 				<a href="<?=BASE?>User/food">Food Inventory</a>
 				<hr class="admin-hr">
-				<a style="color: #2fadfc;" href="<?=BASE?>User/addShoppingIndex">Cleaning Supplies</a>
+				<a href="<?=BASE?>User/cleaning">Cleaning Supplies</a>
 				<hr class="admin-hr">
 				<a href="<?=BASE?>User/ingredients">Ingredients</a>
 				<hr class="admin-hr">
@@ -48,13 +48,6 @@
 	<div class="blue-box">
 		<center>
 			<form action='' method='post'>
-			&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;Item Type:<select name="item_type" size="1" class = "itemBox">
-					<option value="Cleaning">Cleaning</option>
-					<option value="Menu">Menu</option>
-					<option value="Discard">Discard</option>
-					<option value="Prospective">Prospective</option>
-					<option value="Ingredient">Ingredient</option>
-				</select><br>
 				&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;Item Name:<input type='text' name='item_name' class="addTextBox"/><br>
 				Item Description:<input type='text' name='item_description' class="addTextBox"/><br>
 				&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;Item Price:<input type='number' name='item_price' class="addTextBox"/><br>

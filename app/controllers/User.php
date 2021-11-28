@@ -38,7 +38,9 @@ class User extends \app\core\Controller {
     // go to shopping list screen
     #[\app\filters\Customer]
     public function shopping() {
-        $this->view("Admin/shopping");
+        $item = new \app\models\Item();
+        $results = $item->getShoppingItems();
+		$this->view('Admin/shopping',$results);
     }
 
     // go to discarded list

@@ -48,6 +48,15 @@
       <h1 class="PageHeader">Shopping Page<input type="text" placeholder="Search.." type="searchBar"></h1>
       <a href="<?=BASE?>Item/addShoppingItem">
       <img src="http://s3.amazonaws.com/pix.iemoji.com/images/emoji/apple/ios-12/256/heavy-plus-sign.png" width="2%" height="5%"></a>
+      <?php
+            foreach($data as $item){
+                echo "<tr>
+                        <td>$item->item_id</td>
+                        <td>$item->item_name</td>
+                        <td>$item->item_description</td>
+                    </tr>";
+                }
+             ?>
           </center>
         </div>
 
