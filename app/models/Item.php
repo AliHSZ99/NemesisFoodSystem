@@ -4,19 +4,18 @@ namespace app\models;
 
 class Item extends \app\core\Model {
 
-    public static $item_id;
-    public String $type;
-    public String $item_name;
-    public String $item_description;
-    public int $item_price;
-    public int $item_quantity;
-    public int $goal;
-    public int $vote_count;
-    public date $timestamp;
+    public $item_id;
+    public $type;
+    public $item_name;
+    public $item_description;
+    public $item_price;
+    public $item_quantity;
+    public $goal;
+    public $vote_count;
+    public $timestamp;
 
     public function __construct(){
         parent::__construct();
-        self::$item_id += 1;
     }
     
     public function insertShoppingItem() {
@@ -42,7 +41,7 @@ class Item extends \app\core\Model {
     }
 
     public function getShoppingItems() {
-        $SQL = "SELECT * FROM item where `type` = shopping";
+        $SQL = "SELECT * FROM item where `type` = 'shopping'";
         $STMT = self::$_connection->query($SQL);
         $STMT->setFetchMode(\PDO::FETCH_CLASS,'app\\models\\Item');
         return $STMT->fetchAll();
