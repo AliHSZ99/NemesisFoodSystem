@@ -47,6 +47,8 @@
 
     <!-- Food Display -->
     <div class="blue-box">
+
+        <!-- Title and Search Bar -->
         <div class="container"> 
             <div class="row">
                 <div class="col-12 d-flex flex-row" style="margin-top: 5%;">
@@ -61,8 +63,44 @@
                 </div>
             </div>
         </div>
-        <button style="margin-left: 85%;" ><img src="/images/plus-icon.png"></button>
-        <button class="btn btn-outline-light btn-lg">Print</button>
+
+        <!-- Add Button and Print Button -->
+        <div class="container">
+            <div class="row">
+                <div class="col-12 d-flex flex-row" style="margin-top: 5%;">
+                    <button class="addTableBtn"><img src="/images/plus-icon.png"></button>
+                    <button class="btn btn-outline-light btn-lg" onclick="window.print()">Print</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- The Column Info -->
+        <div class="container">
+            <div class="row" style="margin-top: 5%">
+                <table border="1" class="foodTable">
+                    <tr>
+                        <td>Image here</td>
+                        <td>Description</td>
+                    </tr>
+                    <tr>
+                        <td>Image here</td>
+                        <td>Description</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <!-- Delete Button, Edit Button and Post Button -->
+        <div class="container">
+            <div class="row">
+                <div class="col-12 d-flex flex-row" style="margin-top: 5%;">
+                    <button class="deleteFoodBtn">Delete</button>
+                    <button class="editFoodBtn">Edit</button>
+                    <button class="addFoodBtn">Post</button>
+                </div>
+            </div>
+        </div>
+        
     </div>
 
     <!-- black footer -->

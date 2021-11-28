@@ -216,3 +216,42 @@
     width: 90%;
     text-align: center;
 }
+
+.addTableBtn {
+    margin-left: 85%;
+    margin-right: 2%;
+    border-radius: 12px;
+    background: #e7e7e7;
+    border-color: #F5FFFA;
+}
+
+.addFoodBtn {
+    margin-right: 2%;
+    border-radius: 12px;
+    background: #e7e7e7;
+    border-color: #F5FFFA;
+}
+
+.editFoodBtn {
+    margin-right: 2%;
+    border-radius: 12px;
+    background: #e7e7e7;
+    border-color: #F5FFFA;
+}
+
+.deleteFoodBtn {
+    margin-left: 82%;
+    margin-right: 2%;
+    border-radius: 12px;
+    background: #e7e7e7;
+    border-color: #F5FFFA;
+}
+
+.addFoodBtn:hover {
+    background: #FFFFFF;
+}
+
+.foodTable {
+    text-align: center;
+    font-size: 150%;
+}
