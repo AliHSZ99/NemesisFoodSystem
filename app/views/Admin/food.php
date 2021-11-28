@@ -45,7 +45,25 @@
         </div>
     </div>
 
-    <div class="blue-box"></div>
+    <!-- Food Display -->
+    <div class="blue-box">
+        <div class="container"> 
+            <div class="row">
+                <div class="col-12 d-flex flex-row" style="margin-top: 5%;">
+                    <h1 id="foodTitle" style="color:white;">Food Inventory</h1> 
+                    <div class="input-group rounded">
+                        <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search"
+                          aria-describedby="search-addon" />
+                        <span class="input-group-text border-0" id="search-addon">
+                        <i><img src="/images/search-icon.png"></i>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <button style="margin-left: 85%;" ><img src="/images/plus-icon.png"></button>
+        <button class="btn btn-outline-light btn-lg">Print</button>
+    </div>
 
     <!-- black footer -->
     <footer class="footer">

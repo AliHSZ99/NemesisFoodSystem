@@ -99,7 +99,7 @@
 /* CSS FOR SIDE NAVIGATION BAR */
 .sidenav {
     height: 100%;
-    width: 470px;
+    width: 30%;
     position: fixed;
     z-index: 1;
     top: 0;
@@ -172,7 +172,8 @@
 
 /* CSS FOR BLUE BOXXXX */
 .blue-box {
-    width: 100%;
+    margin-left: 30%;
+    width: 70%;
     height: 100%;
     background-color: #2fadfc;
 }
@@ -188,7 +189,7 @@
 }
 
 .searchBar {
-    margin-left: 40%;
+    margin-left: 50%;
 }
 
 .white-box {
@@ -209,3 +210,9 @@
     width: 10%;
 }
 
+/* CSS FOR FOOD INVENTORY */
+
+#foodTitle {
+    width: 90%;
+    text-align: center;
+}
