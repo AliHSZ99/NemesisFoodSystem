@@ -33,6 +33,14 @@ class Item extends \app\core\Model {
         return $STMT->fetchAll();
     }
 
+    public function getItemByType($type) {
+        $SQL = 'SELECT * FROM item where type = :type';
+        $STMT = self::$_connection->prepare($SQL);
+        $STMT->execute(['type'=>$type]);
+        $STMT->setFetchMode(\PDO::FETCH_CLASS,'app\\models\\Item');
+        return $STMT->fetchAll();
+    }
+
     public function getDiscardedItems() {
         $SQL = 'SELECT * FROM Item where type = \"discard\";';
         $STMT = self::$_connection->query($SQL);
