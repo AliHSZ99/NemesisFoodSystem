@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 24, 2021 at 06:33 AM
+-- Generation Time: Nov 29, 2021 at 06:32 PM
 -- Server version: 10.4.20-MariaDB
 -- PHP Version: 8.0.9
 
@@ -32,15 +32,25 @@ USE `nemesisdb`;
 DROP TABLE IF EXISTS `item`;
 CREATE TABLE `item` (
   `item_id` int(11) NOT NULL,
-  `type` int(11) NOT NULL,
+  `type` varchar(20) NOT NULL,
   `item_name` varchar(30) NOT NULL,
-  `item_description` text NOT NULL,
+  `item_description` text DEFAULT NULL,
   `item_price` decimal(6,2) NOT NULL,
-  `item_quantity` int(11) NOT NULL,
-  `goal` int(11) NOT NULL,
-  `vote_count` int(11) NOT NULL,
-  `timestamp` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `item_quantity` int(11) DEFAULT NULL,
+  `goal` int(11) DEFAULT NULL,
+  `vote_count` int(11) DEFAULT NULL,
+  `timestamp` timestamp NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `filename` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `item`
+--
+
+INSERT INTO `item` (`item_id`, `type`, `item_name`, `item_description`, `item_price`, `item_quantity`, `goal`, `vote_count`, `timestamp`, `filename`) VALUES
+(1, 'shopping', 'asdf', 'asfd', '1.00', 1, NULL, NULL, '2021-11-28 00:50:44', ''),
+(2, 'shopping', 'chips', 'ketchup chips', '1234.00', 6, NULL, NULL, '2021-11-28 00:56:18', ''),
+(3, 'shopping', 'asdf', 'asdf', '2.00', 2, NULL, NULL, '2021-11-28 01:06:25', '');
 
 -- --------------------------------------------------------
 
@@ -92,7 +102,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `item`
 --
 ALTER TABLE `item`
-  MODIFY `item_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `item_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `user`

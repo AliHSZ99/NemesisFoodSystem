@@ -13,6 +13,7 @@ class Item extends \app\core\Model {
     public $goal;
     public $vote_count;
     public $timestamp;
+    public $filename;
 
     public function __construct(){
         parent::__construct();
@@ -53,6 +54,13 @@ class Item extends \app\core\Model {
         $STMT = self::$_connection->query($SQL);
         $STMT->setFetchMode(\PDO::FETCH_CLASS,'app\\models\\Item');
         return $STMT->fetchAll();
+    }
+
+    public function insertFoodItem() {
+        $SQL = 'INSERT INTO item (item_name, type, item_description, item_price, item_quantity, goal, filename) VALUES (:item_name, :type, :item_description, :item_price, :item_quantity, :goal, :filename)';
+        $STMT = self::$_connection->prepare($SQL);
+        $STMT->execute(['item_name'=>$this->item_name, 'type'=>$this->type, 'item_description'=>$this->item_description,'item_price'=>$this->item_price,'item_quantity'=>$this->item_quantity, 'goal'=>$this->goal, 'filename'=>$this->filename]);
+
     }
 
 }

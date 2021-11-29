@@ -20,7 +20,7 @@ class User extends \app\core\Controller {
     // go to the food inventory
     #[\app\filters\Customer]
     public function food() {
-        $this->view("Admin/food");
+        $this->view("Admin/Food/food");
     }
 
     // go to the the cleaning supplies screen
