@@ -83,7 +83,7 @@
                 Quantity: <input type="number" name="item_quantity"><br>
                 Set Goal: <input type="number" name="goal"><br>
                 Add A picture: <input type="file" name="newPicture"><br>
-                <input type="submit" name="action" value="Create">
+                <input type="submit" name="action" value="Post">
             </form>
         </div>
     </div>

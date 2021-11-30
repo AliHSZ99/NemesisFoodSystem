@@ -68,7 +68,8 @@
         <div class="container">
             <div class="row">
                 <div class="col-12 d-flex flex-row" style="margin-top: 5%;">
-                    <button class="btn btn-outline-light btn-lg" onclick="window.print()" style="margin-left: 90%">Print</button>
+                    <a href="<?=BASE?>Item/addFoodItem" class="btn btn-light" style="margin-left: 85%; margin-right: 2%;">Add</a>
+                    <button class="btn btn-outline-light btn-lg" onclick="window.print()" >Print</button>
                 </div>
             </div>
         </div>
@@ -76,34 +77,33 @@
         <!-- Food View -->
         <div class="container">
             <div class="row" style="margin-top: 5%">
-                    <table border="1" class="foodTable">
+                    <table class="table table-light table-hover">
+                        <tr class="table-secondary">
+                            <th>Images</th>
+                            <th>Name</th>
+                            <th>Description</th>
+                            <th>Price</th>
+                            <th>Quantity</th>
+                            <th>Goals</th>
+                            <th>Actions</th>
+                        </tr>
                         <?php 
                             foreach($data as $results) {
                                 echo " <tr> 
+                                            <td>$results->filename</td>
                                             <td>$results->item_name</td>
                                             <td>$results->item_description</td>
                                             <td>$results->item_price</td>
                                             <td>$results->item_quantity</td>
                                             <td>$results->goal</td>
-                                            <td>$results->filename</td>
                                             <td>
-                                                <button class='deleteFoodBtn' type='submit' name='delete'>Delete</button>
-                                                <button class='editFoodBtn' type='submit' name='edit'>Edit</button>
+                                                <button class='btn btn-light btn-sm px-3' type='submit' name='delete'>Delete</button>
+                                                <button class='btn btn-light btn-sm px-3' type='submit' name='edit'>Edit</button>
                                             </td>
                                         </tr>";
                             }
                         ?>
                     </table>
-                </div>
-            </div>
-
-            <!-- Delete Button, Edit Button and Post Button -->
-            <div class="container">
-                <div class="row">
-                    <div class="col-12 d-flex flex-row" style="margin-top: 5%;">
-                        
-                        <button class="addFoodBtn" type="submit" name="add"><a href="<?=BASE?>Item/addFoodItem">Add</a></button>
-                    </div>
                 </div>
             </div>
     </div>
