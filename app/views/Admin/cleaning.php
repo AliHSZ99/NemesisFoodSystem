@@ -52,8 +52,8 @@
         <div id="outer">
             <div class="inner" style="margin-left: 50%">
                 <form action="" method="POST">
-                    <input type="search" name="">
-                    <input type="submit" value="Search">               
+                    <input name="searchQuery" type="search">
+                    <button name="searchButton" id="" class="" type="submit" >Search</button>
                     <a href="/Item/addItem/"><img src='/images/plus-icon.png' alt='add' style='width:42px;height:42px;'></a>
                     <button class="btn btn-outline-light btn-lg" onclick="window.print()" style="">Print</button>
                 </form>                                
@@ -73,10 +73,10 @@
                         </tr>
                     </thead>
                     <tbody>
-                   
+                   <form action='' method='POST'>
                 <?php
                     $items = new \app\models\Item();
-                    $items = $items->getItemByType("shopping");
+                    $items = $items->getItemByType("cleaning");
 
                     foreach ($items as $item) { 
                         echo "<tr>
@@ -85,13 +85,13 @@
                             <td><input disabled type='text' id='' value='$item->item_price' name=''></td>
                             <td><input disabled type='text' id='' value='$item->item_quantity' name=''></td>
                             <td>
-                                <a href='/Item/redirect/editCleaning'><img src='/images/pencil-icon.png' alt='edit' style='width:42px;height:42px;'></a>
+                                <a href='/Item/editItem'><img src='/images/pencil-icon.png' alt='edit' style='width:42px;height:42px;'></a>
                                 <a href='/Item/deleteItem/$item->item_id'><img src='/images/delete-icon.png' alt='delete' style='width:42px;height:42px;'></a>
-                            </td>                            
+                            </td>                           
                             </tr>";
                     }
                 ?>
-                                        
+                </form>                         
                     </tbody>
                 </table>
             </center>

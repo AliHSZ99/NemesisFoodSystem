@@ -59,7 +59,6 @@
                 </form>                                
             </div>
         </div>                
-        <br>
         <div><br>          
             <center>
                 <table style="border:2px solid black; background-color: white;">

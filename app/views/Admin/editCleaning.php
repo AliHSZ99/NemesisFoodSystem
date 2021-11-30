@@ -33,7 +33,7 @@
             <hr class="admin-hr">
             <a href="<?=BASE?>User/customers">Customers</a>
         </div>
-
+        <!-- !-->
         </center>
         <hr>
         <div class="text-center setting-logout-position-admin">
@@ -63,25 +63,26 @@
                         </tr>
                     </thead>
                     <tbody>
-                   
+                   <form action='' method='POST'>
                 <?php
                     $items = new \app\models\Item();
-                    $items = $items->getItemByType("shopping");
+                    $items = $items->getItemByType("cleaning");
 
                     foreach ($items as $item) { 
                         echo "<tr>
-                            <td><input type='text' id='' value='$item->item_name' name=''></td>
-                            <td><input type='text' id='' value='$item->item_description' name=''></td>
-                            <td><input type='text' id='' value='$item->item_price' name=''></td>
-                            <td><input type='text' id='' value='$item->item_quantity' name=''></td>
+                            <td><input name='item->item_id' type='hidden' id='' value='$item->item_id'>
+                                <input name='item_name$item->item_id' type='text' id='' value='$item->item_name'></td>
+                            <td><input name='item_description$item->item_id' type='text' id='' value='$item->item_description'></td>
+                            <td><input name='item_price$item->item_id' type='text' id='' value='$item->item_price'></td>
+                            <td><input name='item_quantity$item->item_id' type='text' id='' value='$item->item_quantity'></td>
                             <td>
-                                <a href='/Item/editItem/$item->item_id'><img src='/images/save-icon.png' alt='delete' style='width:42px;height:42px;'></a>
-                                <a href='/Item/deleteItem/$item->item_id'><img src='/images/delete-icon.png' alt='edit' style='width:42px;height:42px;'></a>
-                            </td>                            
+                                <input name='saveChanges4' type='image' src='/images/save-icon.png' alt='delete' style='width:42px;height:42px;'/>
+                                <a href='/Item/deleteItem/$item->item_id'><img src='/images/delete-icon.png' alt='delete' style='width:42px;height:42px;'></a>
+                            </td>                           
                             </tr>";
                     }
                 ?>
-                                        
+                </form>                    
                     </tbody>
                 </table>
             </center>

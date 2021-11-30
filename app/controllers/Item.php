@@ -127,19 +127,19 @@ class Item extends \app\core\Controller {
             $this->view('Admin/addShoppingItem');
     }
 
-    public function editItem($item_id) {
-        $item = new \app\models\Item();
-        $item = $item->get($item_id);
+    public function editItem() {
+            $item = new \app\models\Item();
+            $item = $item->get("4");    
 
-        if(isset($_POST['action'])){
-            $item->item_name = $_POST['item_name'];
-            $item->item_quantity = $_POST['item_quantity'];
-            $item->item_description = $_POST['item_description'];
-            $item->item_price = $_POST['item_price'];
+        if(isset($_POST["saveChanges4"])){        
+            $item->item_name = $_POST["item_name$item->item_id"];
+            $item->item_quantity = $_POST["item_quantity$item->item_id"];
+            $item->item_description = $_POST["item_description$item->item_id"];
+            $item->item_price = $_POST["item_price$item->item_id"];
             $item->update();
-            //header('location:/Admin/shopping');
-        }else{
-            //$this->view('Admin/editShoppingItem',$item);
+            header('location:/Admin/cleaning');
+        } else {
+            $this->view("Admin/editCleaning");                    
         }
     }
 
