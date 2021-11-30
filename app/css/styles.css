@@ -99,7 +99,7 @@
 /* CSS FOR SIDE NAVIGATION BAR */
 .sidenav {
     height: 100%;
-    width: 470px;
+    width: 30%;
     position: fixed;
     z-index: 1;
     top: 0;
@@ -172,7 +172,8 @@
 
 /* CSS FOR BLUE BOXXXX */
 .blue-box {
-    width: 100%;
+    margin-left: 30%;
+    width: 70%;
     height: 100%;
     background-color: #2fadfc;
 }
@@ -184,6 +185,72 @@
 }
 
 .printButton {
+
+}
+
+.searchBar {
+    margin-left: 50%;
+}
+
+.white-box {
+    width: 100%;
+    height: 10%; 
+    margin-top: 50px; 
+    margin-left: auto; 
+    margin-right: auto;   
+    background: rgba(255,255,255,1);
+    padding: 30px;
+}
+
+.discardTable {
+    padding-right: 10mm;
+}
+
+.itemBox {
+    width: 10%;
+}
+
+/* CSS FOR FOOD INVENTORY */
+
+#foodTitle {
+    width: 90%;
+    text-align: center;
+}
+
+.addFoodBtn {
+    margin-right: 2%;
+    border-radius: 12px;
+    background: #e7e7e7;
+    border-color: #F5FFFA;
+}
+
+.editFoodBtn {
+    margin-right: 2%;
+    border-radius: 12px;
+    background: #e7e7e7;
+    border-color: #F5FFFA;
+}
+
+.deleteFoodBtn {
+    margin-left: 82%;
+    margin-right: 2%;
+    border-radius: 12px;
+    background: #e7e7e7;
+    border-color: #F5FFFA;
+}
+
+.addFoodBtn:hover {
+    background: #FFFFFF;
+}
+
+.foodTable {
+    text-align: center;
+    font-size: 150%;
+}
+
+.PageHeader {
+    color: white;
+    margin-left: 10%;
 
 }
 
@@ -209,3 +276,12 @@
     width: 10%;
 }
 
+.scroll {
+    margin-left: 10%;
+    background-color: white;
+    width: 40%;
+    height: 70%;
+    overflow-x: hidden;
+    overflow-y: auto;
+    text-align:justify;
+}

@@ -45,7 +45,57 @@
         </div>
     </div>
 
-    <div class="blue-box"></div>
+    <div class="blue-box" style="border:20px solid white">
+        <br>            
+        <form action="" method="POST">
+            <h1 class="PageHeader">Cleaning Supplies                    
+                <input type="search" name="">
+                <input type="submit" value="Search">
+            </h1>
+        </form>
+        <br>
+        <div>
+            <button onclick="window.print()" class="printButton">Print</button>  
+        </div>
+        <br>
+        <div style="background-color: ;"><br>          
+            <center>
+                <table style="border:2px solid black">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Description</th>
+                            <th>Price</th>
+                            <th>Quantity</th>
+                            <th>Actions</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                   
+                <?php
+                    $items = new \app\models\Item();
+                    $items = $items->getItemByType("shopping");
+
+                    foreach ($items as $item) { 
+                        echo "<tr>
+                            <td><input type='text' id='' value='$item->item_name' name=''></td>
+                            <td><input type='text' id='' value='$item->item_description' name=''></td>
+                            <td><input type='text' id='' value='$item->item_price' name=''></td>
+                            <td><input type='text' id='' value='$item->item_quantity' name=''></td>
+                            <td>
+                                <a href=''><img src='' alt='delete' style='width:42px;height:42px;'></a>
+                                <a href=''><img src='' alt='edit' style='width:42px;height:42px;'></a>
+                            </td>                            
+                            </tr>";
+                    }
+                ?>
+                                        
+                    </tbody>
+                </table>
+            </center>
+        </div>                    
+    </div>
 
     <!-- black footer -->
     <footer class="footer">

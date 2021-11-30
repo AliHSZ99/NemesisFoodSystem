@@ -45,18 +45,31 @@
   </div>
   <div class="blue-box">
     <center> 
-      <h1 class="PageHeader">Shopping Page<input type="text" placeholder="Search.." type="searchBar"></h1>
+      <h1 class="PageHeader">Shopping Page
+         <button onclick="window.print()" class="printButton">Print</button>
+         <form action="/Admin/searchShoppingItem" method="POST">
+                <input type="text" name="search">
+                <button type="submit">Search</button>
+        </form></h1>
       <a href="<?=BASE?>Item/addShoppingItem">
-      <img src="http://s3.amazonaws.com/pix.iemoji.com/images/emoji/apple/ios-12/256/heavy-plus-sign.png" width="2%" height="5%"></a>
+      <img src="https://media.discordapp.net/attachments/883416041991069776/914549468341362708/plus.png" width="2%" height="5%"></a>
+      <div class = "scroll">
       <?php
             foreach($data as $item){
                 echo "<tr>
                         <td>$item->item_id</td>
                         <td>$item->item_name</td>
                         <td>$item->item_description</td>
+                        <td>$item->item_quantity</td>
+                        <td>
+                        <a href='/Item/editShoppingItem/$item->item_id'>edit</a> |
+                        <a href='/Item/deleteShoppingItem/$item->item_id'>delete</a>
+                        </td>
+                        <br>
                     </tr>";
                 }
              ?>
+             </div>
           </center>
         </div>
 

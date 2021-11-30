@@ -61,6 +61,19 @@
                 </tr>
             </table>
         </div>
+        <?php
+            foreach($data as $item){
+                echo "<tr>
+                        <td>$item->item_id</td>
+                        <td>$item->item_name</td>
+                        <td>$item->item_description</td>
+                        <td>$item->item_quantity</td>
+                        <td>
+                        </td>
+                        <br>
+                    </tr>";
+                }
+             ?>
     </center>
 </div>
 

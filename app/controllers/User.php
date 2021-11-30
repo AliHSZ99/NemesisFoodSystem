@@ -20,7 +20,9 @@ class User extends \app\core\Controller {
     // go to the food inventory
     #[\app\filters\Customer]
     public function food() {
-        $this->view("Admin/food");
+        $item = new \app\models\Item();
+        $results = $item->getFoodItems();
+        $this->view("Admin/Food/food", $results);
     }
 
     // go to the the cleaning supplies screen
@@ -46,7 +48,9 @@ class User extends \app\core\Controller {
     // go to discarded list
     #[\app\filters\Customer]
     public function discarded() {
-        $this->view("Admin/discarded");
+        $item = new \app\models\Item();
+        $results = $item->getDiscardedItems();
+		$this->view('Admin/discarded',$results);
     }
 
     // go to customers screen
