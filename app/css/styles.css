@@ -1,4 +1,7 @@
 /* CSS FOR LOGIN SCREEN */
+
+/* We can't have repeating CSS elements they override each other. */
+
 .loginregister {
     background-color: #00003a;
     height: 185px;
@@ -180,8 +183,6 @@
 /*Header used for pages*/
 .PageHeader {
     color: white;
-    margin-left: 10%;
-
 }
 
 .printButton {
@@ -248,32 +249,12 @@
     font-size: 150%;
 }
 
-.PageHeader {
-    color: white;
-    margin-left: 10%;
-
-}
-
 .searchBar {
     margin-left: 40%;
 }
 
-.white-box {
-    width: 100%;
-    height: 10%; 
-    margin-top: 50px; 
-    margin-left: auto; 
-    margin-right: auto;   
-    background: rgba(255,255,255,1);
-    padding: 30px;
-}
-
 .discardTable {
     padding-right: 10mm;
-}
-
-.itemBox {
-    width: 10%;
 }
 
 .scroll {
@@ -284,4 +265,15 @@
     overflow-x: hidden;
     overflow-y: auto;
     text-align:justify;
+}
+
+#outer
+{
+    width:100%;
+    text-align: center;
+}
+
+.inner
+{
+    display: inline-block;
 }

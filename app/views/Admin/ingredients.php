@@ -45,7 +45,59 @@
         </div>
     </div>
 
-    <div class="blue-box"></div>
+    <div class="blue-box" style="border:20px solid white">
+        <br>            
+        <h1 class="PageHeader text-center">Ingredients</h1>                
+        <br>
+        <div id="outer">
+            <div class="inner" style="margin-left: 50%">
+                <form action="" method="POST">
+                    <input type="search" name="">
+                    <input type="submit" value="Search">               
+                    <a href='/Item/editItem/$item->item_id'><img src='/images/plus-icon.png' alt='delete' style='width:42px;height:42px;'></a>
+                    <button class="btn btn-outline-light btn-lg" onclick="window.print()" style="">Print</button>
+                </form>                                
+            </div>
+        </div>                
+        <br>
+        <div><br>          
+            <center>
+                <table style="border:2px solid black; background-color: white;">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Description</th>
+                            <th>Price</th>
+                            <th>Quantity</th>
+                            <th>Actions</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                   
+                <?php
+                    $items = new \app\models\Item();
+                    $items = $items->getItemByType("ingredients");
+
+                    foreach ($items as $item) { 
+                        echo "<tr>
+                            <td><input disabled type='text' id='' value='$item->item_name' name=''></td>
+                            <td><input disabled type='text' id='' value='$item->item_description' name=''></td>
+                            <td><input disabled type='text' id='' value='$item->item_price' name=''></td>
+                            <td><input disabled type='text' id='' value='$item->item_quantity' name=''></td>
+                            <td>
+                                <a href='/Item/editItem/$item->item_id'><img src='/images/pencil-icon.png' alt='delete' style='width:42px;height:42px;'></a>
+                                <a href='/Item/deleteItem/$item->item_id'><img src='/images/delete-icon.png' alt='edit' style='width:42px;height:42px;'></a>
+                            </td>                            
+                            </tr>";
+                    }
+                ?>
+                                        
+                    </tbody>
+                </table>
+            </center>
+        </div>                    
+    </div>
 
     <!-- black footer -->
     <footer class="footer">
