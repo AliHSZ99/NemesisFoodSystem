@@ -108,4 +108,49 @@ class Item extends \app\core\Controller {
 		$Item->delete($item_id);
 		header('location:/Admin/shopping');
     }
+
+    //For Item we don't need delete, edit, add methods for each type.
+    
+    public function addItem() {
+        if(isset($_POST['action'])){
+            $item = new \app\models\Item();
+            $item->item_name = $_POST['item_name'];
+            $item->type = "shopping";
+            $item->item_description = $_POST['item_description'];
+            $item->item_price = $_POST['item_price'];
+            $item->item_quantity = $_POST['item_quantity'];
+            $item->insertShoppingItem();
+
+            header('location:/Admin/index');
+
+        }else //1 present a form to the user
+            $this->view('Admin/addShoppingItem');
+    }
+
+    public function editItem($item_id) {
+        $item = new \app\models\Item();
+        $item = $item->get($item_id);
+
+        if(isset($_POST['action'])){
+            $item->item_name = $_POST['item_name'];
+            $item->item_quantity = $_POST['item_quantity'];
+            $item->item_description = $_POST['item_description'];
+            $item->item_price = $_POST['item_price'];
+            $item->update();
+            //header('location:/Admin/shopping');
+        }else{
+            //$this->view('Admin/editShoppingItem',$item);
+        }
+    }
+
+    public function deleteItem($item_id) {
+        $Item = new \app\models\Item();
+        $Item->delete($item_id);
+        header('location:/Admin/cleaning');
+    }
+
+    public function redirect($location) {
+        $this->view("Admin/$location");        
+    }
+
 }

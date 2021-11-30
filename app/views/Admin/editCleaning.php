@@ -47,18 +47,8 @@
 
     <div class="blue-box" style="border:20px solid white">
         <br>            
-        <h1 class="PageHeader text-center">Cleaning Supplies</h1>                
+        <h1 class="PageHeader text-center">Editing Cleaning Supplies</h1>                              
         <br>
-        <div id="outer">
-            <div class="inner" style="margin-left: 50%">
-                <form action="" method="POST">
-                    <input type="search" name="">
-                    <input type="submit" value="Search">               
-                    <a href="/Item/addItem/"><img src='/images/plus-icon.png' alt='add' style='width:42px;height:42px;'></a>
-                    <button class="btn btn-outline-light btn-lg" onclick="window.print()" style="">Print</button>
-                </form>                                
-            </div>
-        </div>                
         <div><br>          
             <center>
                 <table style="border:2px solid black; background-color: white;">
@@ -80,13 +70,13 @@
 
                     foreach ($items as $item) { 
                         echo "<tr>
-                            <td><input disabled type='text' id='' value='$item->item_name' name=''></td>
-                            <td><input disabled type='text' id='' value='$item->item_description' name=''></td>
-                            <td><input disabled type='text' id='' value='$item->item_price' name=''></td>
-                            <td><input disabled type='text' id='' value='$item->item_quantity' name=''></td>
+                            <td><input type='text' id='' value='$item->item_name' name=''></td>
+                            <td><input type='text' id='' value='$item->item_description' name=''></td>
+                            <td><input type='text' id='' value='$item->item_price' name=''></td>
+                            <td><input type='text' id='' value='$item->item_quantity' name=''></td>
                             <td>
-                                <a href='/Item/redirect/editCleaning'><img src='/images/pencil-icon.png' alt='edit' style='width:42px;height:42px;'></a>
-                                <a href='/Item/deleteItem/$item->item_id'><img src='/images/delete-icon.png' alt='delete' style='width:42px;height:42px;'></a>
+                                <a href='/Item/editItem/$item->item_id'><img src='/images/save-icon.png' alt='delete' style='width:42px;height:42px;'></a>
+                                <a href='/Item/deleteItem/$item->item_id'><img src='/images/delete-icon.png' alt='edit' style='width:42px;height:42px;'></a>
                             </td>                            
                             </tr>";
                     }
