@@ -97,7 +97,6 @@ class Item extends \app\core\Controller {
                      return;
                 }
                 if(move_uploaded_file($_FILES['newPicture']['tmp_name'], $filepath)){
-                    $item = new \app\models\Item();
                     $item->item_name = $_POST['item_name'];
                     $item->item_description = $_POST['item_description'];
                     $item->item_price = $_POST['item_price'];
@@ -111,7 +110,6 @@ class Item extends \app\core\Controller {
                     echo "There was an error";
                 } 
             } else {
-                    $item = new \app\models\Item();
                     $item = $item->get($item_id);
                     $item->item_name = $_POST['item_name'];
                     $item->item_description = $_POST['item_description'];
@@ -160,7 +158,6 @@ class Item extends \app\core\Controller {
                      return;
                 }
                 if(move_uploaded_file($_FILES['newPicture']['tmp_name'], $filepath)){
-                    $item = new \app\models\Item();
                     $item->item_name = $_POST['item_name'];
                     $item->type = "prospective";
                     $item->item_description = $_POST['item_description'];
@@ -210,7 +207,6 @@ class Item extends \app\core\Controller {
                      return;
                 }
                 if(move_uploaded_file($_FILES['newPicture']['tmp_name'], $filepath)){
-                    $item = new \app\models\Item();
                     $item->item_name = $_POST['item_name'];
                     $item->item_description = $_POST['item_description'];
 		    $item->goal = $_POST['goal'];
@@ -225,7 +221,6 @@ class Item extends \app\core\Controller {
                     echo "There was an error";
                 } 
             } else {
-                    $item = new \app\models\Item();
                     $item = $item->get($item_id);
                     $item->item_name = $_POST['item_name'];
                     $item->item_description = $_POST['item_description'];
