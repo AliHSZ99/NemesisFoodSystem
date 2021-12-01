@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 24, 2021 at 06:33 AM
+-- Generation Time: Dec 01, 2021 at 02:51 AM
 -- Server version: 10.4.20-MariaDB
 -- PHP Version: 8.0.9
 
@@ -32,14 +32,15 @@ USE `nemesisdb`;
 DROP TABLE IF EXISTS `item`;
 CREATE TABLE `item` (
   `item_id` int(11) NOT NULL,
-  `type` int(11) NOT NULL,
+  `type` varchar(20) NOT NULL,
   `item_name` varchar(30) NOT NULL,
   `item_description` text NOT NULL,
   `item_price` decimal(6,2) NOT NULL,
   `item_quantity` int(11) NOT NULL,
   `goal` int(11) NOT NULL,
   `vote_count` int(11) NOT NULL,
-  `timestamp` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `timestamp` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `filename` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
