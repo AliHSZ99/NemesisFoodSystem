@@ -88,7 +88,7 @@
                         </tr>
                         <tr>
                             <td>
-                                <img src="<?=$data['item']->filename?>">
+                                <img src="<?=$data['item']->filename?>" style="width:150px; height: 120px;">
                                 <input type="file" name="newPicture"><br>
 
                             </td>
