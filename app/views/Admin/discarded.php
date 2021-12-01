@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link rel="stylesheet" href="/app/css/styles.css">
-    <title>Discarded List</title>
+    <title>Discard items</title>
 </head>
 
 <body>
@@ -13,26 +13,26 @@
     <!-- side navigation bar -->
     <div class="sidenav">
         <center>
-            <a href="<?=BASE?>User/adminIndex"><img class="logo" src="/images/logo.png" alt=""></a>
-            <h2 class="nav-title" style="color:white; margin-top: 30px">Welcome <?=$_SESSION["username"]?>!</h2>
+        <a href="<?=BASE?>User/adminIndex"><img class="logo" src="/images/logo.png" alt=""></a>
+        <h2 class="nav-title" style="color:white; margin-top: 30px">Welcome <?=$_SESSION["username"]?>!</h2>
+        
+        <h4 style="color:white; letter-spacing: 2px;"><?=$_SESSION["fullname"]?></h4>
 
-            <h4 style="color:white; letter-spacing: 2px;"><?=$_SESSION["fullname"]?></h4>
-
-            <div class="admin-navbar-items">
-                <a href="<?=BASE?>User/adminIndex">Prospective Menu</a>
-                <hr class="admin-hr">
-                <a href="<?=BASE?>User/food">Food Inventory</a>
-                <hr class="admin-hr">
-                <a href="<?=BASE?>User/cleaning">Cleaning Supplies</a>
-                <hr class="admin-hr">
-                <a href="<?=BASE?>User/ingredients">Ingredients</a>
-                <hr class="admin-hr">
-                <a href="<?=BASE?>User/shopping">Shopping List</a>
-                <hr class="admin-hr">
-                <a style="color: #2fadfc;" href="<?=BASE?>User/discarded">Discarded List</a>
-                <hr class="admin-hr">
-                <a href="<?=BASE?>User/customers">Customers</a>
-            </div>
+        <div class="admin-navbar-items">
+            <a href="<?=BASE?>User/adminIndex">Prospective Menu</a>
+            <hr class="admin-hr">
+            <a href="<?=BASE?>User/food">Food Inventory</a>
+            <hr class="admin-hr">
+            <a href="<?=BASE?>User/cleaning">Cleaning Supplies</a>
+            <hr class="admin-hr">
+            <a href="<?=BASE?>User/ingredients">Ingredients</a>
+            <hr class="admin-hr">
+            <a href="<?=BASE?>User/shopping">Shopping List</a>
+            <hr class="admin-hr">
+            <a href="<?=BASE?>User/discarded" style="color: #2fadfc;">Discarded List</a>
+            <hr class="admin-hr">
+            <a href="<?=BASE?>User/customers">Customers</a>
+        </div>
 
         </center>
         <hr>
@@ -45,42 +45,70 @@
         </div>
     </div>
 
+    <!-- Food Display -->
     <div class="blue-box">
-        <center>
-            <h1 class="PageHeader">Discarded Page</h1>
-            <input type="text" placeholder="Search.." class="searchBar"> 
-            <button onclick="window.print()" class="printButton">Print</button>
-            <div class="white-box">
-                <table>
-                  <tr>
-                    <th class="discardTable">Name</th>
-                    <th class="discardTable">Description</th>
-                    <th class="discardTable">Quanity</th>
-                    <th class="discardTable">Price</th>
-                    <th class="discardTable">Actions</th>
-                </tr>
-            </table>
+
+        <!-- Title and Search Bar -->
+        <div class="container"> 
+            <div class="row">
+                <div class="col-12 d-flex flex-row" style="margin-top: 5%;">
+                    <h1 id="foodTitle" style="color:white;">Food Inventory</h1> 
+                    <div class="input-group rounded">
+                        <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search"
+                          aria-describedby="search-addon" />
+                        <span class="input-group-text border-0" id="search-addon">
+                        <i><img src="/images/search-icon.png"></i>
+                        </span>
+                    </div>
+                </div>
+            </div>
         </div>
-        <?php
+
+        <!-- Add Button and Print Button -->
+        <div class="container">
+            <div class="row">
+                <div class="col-12 d-flex flex-row" style="margin-top: 5%;">
+                    <a href="<?=BASE?>Item/addFoodItem" class="btn btn-success" style="margin-left: 85%; margin-right: 2%; vertical-align: middle;">Add</a>
+                    <button class="btn btn-outline-light btn-lg" onclick="window.print()" >Print</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Food View -->
+        <div class="container">
+            <div class="row" style="margin-top: 5%">
+                    <table class="table table-light table-hover">
+                        <tr class="table-secondary">
+                            <th>Name</th>
+                            <th>Description</th>
+                            <th>Price</th>
+                            <th>Quantity</th>
+                            <th>Actions</th>
+                        </tr>
+                        <?php
             foreach($data as $item){
                 echo "<tr>
-                        <td>$item->item_id</td>
                         <td>$item->item_name</td>
                         <td>$item->item_description</td>
+                        <td>$item->item_price</td>
                         <td>$item->item_quantity</td>
                         <td>
+                        <a href='/Item/deleteItem/$item->item_id' class='btn btn-danger' style='margin-right: 2%;'>Delete</a>
+                        <a href='/Item/editDiscardItem/$item->item_id' class='btn btn-primary' style='margin-right: 2%;''>Edit</a>
                         </td>
                         <br>
                     </tr>";
                 }
              ?>
-    </center>
-</div>
+                    </table>
+                </div>
+            </div>
+    </div>
 
-<!-- black footer -->
-<footer class="footer">
-    <center> 
-        <div class="mt-2 allotherfooters">269 Boul. St-Jean #245J (Plaza Pointe-Claire)  Montreal,  QC <div> 
+    <!-- black footer -->
+    <footer class="footer">
+        <center> 
+            <div class="mt-2 allotherfooters">269 Boul. St-Jean #245J (Plaza Pointe-Claire)  Montreal,  QC <div> 
         </center>
     </footer>
 
