@@ -14,7 +14,9 @@ class User extends \app\core\Controller {
     // go to admin index (prospective menu)
     #[\app\filters\Customer]
     public function adminIndex() {
-        $this->view("Admin/index");
+	$item = new \app\models\Item();
+        $results = $item->getFoodItems();
+        $this->view("Admin/index", $results);
     }
 
     // go to the food inventory
