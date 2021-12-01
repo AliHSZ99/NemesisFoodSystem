@@ -68,7 +68,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-12 d-flex flex-row" style="margin-top: 5%;">
-                    <a href="<?=BASE?>Item/addFoodItem" class="btn btn-light" style="margin-left: 85%; margin-right: 2%;">Add</a>
+                    <a href="<?=BASE?>Item/addFoodItem" class="btn btn-success" style="margin-left: 85%; margin-right: 2%; vertical-align: middle;">Add</a>
                     <button class="btn btn-outline-light btn-lg" onclick="window.print()" >Print</button>
                 </div>
             </div>
@@ -84,21 +84,21 @@
                             <th>Description</th>
                             <th>Price</th>
                             <th>Quantity</th>
-                            <th>Goals</th>
                             <th>Actions</th>
                         </tr>
                         <?php 
                             foreach($data as $results) {
                                 echo " <tr> 
-                                            <td>$results->filename</td>
+                                            <td>
+                                                <img src='$results->filename' style='width:150px; height: 120px;'>
+                                            </td>
                                             <td>$results->item_name</td>
                                             <td>$results->item_description</td>
                                             <td>$results->item_price</td>
                                             <td>$results->item_quantity</td>
-                                            <td>$results->goal</td>
                                             <td>
-                                                <button class='btn btn-light btn-sm px-3' type='submit' name='delete'>Delete</button>
-                                                <button class='btn btn-light btn-sm px-3' type='submit' name='edit'>Edit</button>
+                                                 <a href='/Item/deleteFoodItem/$results->item_id' class='btn btn-danger' style='margin-right: 2%;'>Delete</a>
+                                                 <a href='/Item/editFoodItem/$results->item_id' class='btn btn-primary' style='margin-right: 2%;''>Edit</a>
                                             </td>
                                         </tr>";
                             }
