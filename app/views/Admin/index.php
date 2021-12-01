@@ -19,7 +19,7 @@
         <h4 style="color:white; letter-spacing: 2px;"><?=$_SESSION["fullname"]?></h4>
 
         <div class="admin-navbar-items">
-            <a style="color: #2fadfc;" href="<?=BASE?>User/adminIndex">Prospective Menu</a>
+            <a style="color: #2fadfc; "href="<?=BASE?>User/adminIndex">Prospective Menu</a>
             <hr class="admin-hr">
             <a href="<?=BASE?>User/food">Food Inventory</a>
             <hr class="admin-hr">
@@ -45,7 +45,70 @@
         </div>
     </div>
 
-    <div class="blue-box"></div>
+    <!-- Prospective Display -->
+    <div class="blue-box">
+
+        <!-- Title and Search Bar -->
+        <div class="container"> 
+            <div class="row">
+                <div class="col-12 d-flex flex-row" style="margin-top: 5%;">
+                    <h1 id="foodTitle" style="color:white;">Prospective Menu</h1> 
+                    <div class="input-group rounded">
+                        <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search"
+                          aria-describedby="search-addon" />
+                        <span class="input-group-text border-0" id="search-addon">
+                        <i><img src="/images/search-icon.png"></i>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Add Button and Print Button -->
+        <div class="container">
+            <div class="row">
+                <div class="col-12 d-flex flex-row" style="margin-top: 5%;">
+                    <a href="<?=BASE?>Item/addProspectiveItem" class="btn btn-success" style="margin-left: 85%; margin-right: 2%;">Add</a>
+                    <button class="btn btn-outline-light btn-lg" onclick="window.print()">Print</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Prospective View -->
+        <div class="container">
+            <div class="row" style="margin-top: 5%">
+                    <table class="table table-light table-hover">
+                        <tr class="table-secondary">
+                            <th>Images</th>
+                            <th>Name</th>
+                            <th>Description</th>
+                            <th>Price</th>
+                            <th>Quantity</th>
+                            <th>Goals</th>
+                            <th>Actions</th>
+                        </tr>
+                        <?php 
+                            foreach($data as $results) {
+                                echo " <tr> 
+                                            <td>
+                                                <img src='$results->filename' style='width:150px; height: 120px;'>
+                                            </td>
+                                            <td>$results->item_name</td>
+                                            <td>$results->item_description</td>
+                                            <td>$results->item_price</td>
+                                            <td>$results->item_quantity</td>
+                                            <td>$results->goal</td>
+                                            <td>
+                                                 <a href='/Item/deleteProspectiveItem/$results->item_id' class='btn btn-danger' style='margin-right: 2%;'>Delete</a>
+                                                 <a href='/Item/editProspectiveItem/$results->item_id' class='btn btn-primary' style='margin-right: 2%;''>Edit</a>
+                                            </td>
+                                        </tr>";
+                            }
+                        ?>
+                    </table>
+                </div>
+            </div>
+    </div>
 
     <!-- black footer -->
     <footer class="footer">
