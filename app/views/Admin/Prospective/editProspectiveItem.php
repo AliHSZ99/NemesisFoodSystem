@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link rel="stylesheet" href="/app/css/styles.css">
-    <title>Edit Food Inventory</title>
+    <title>Edit Prospective Menu</title>
 </head>
 
 <body>
@@ -73,10 +73,10 @@
             </div>
         </div>
 
-        <!-- Food Edit -->
+        <!-- Prospective Edit -->
         <div class="container">
             <div class="row" style="margin-top: 5%">
-                <form action="" method="POST">
+                <form action="" method="POST" enctype="multipart/form-data">
                     <table class="table table-light table-hover">
                         <tr class="table-secondary">
                             <th>Images</th>
@@ -88,7 +88,11 @@
                             <th>Actions</th>
                         </tr>
                         <tr>
-                            <td><input type="file" name="filename" value="<?php echo $data['item']->filename; ?>"></td>
+                            <td>
+                                <img src="<?=$data['item']->filename?>">
+                                <input type="file" name="newPicture"><br>
+
+                            </td>
                             <td><input type="text" name="item_name" value="<?php echo $data['item']->item_name; ?>"></td>
                             <td><input type="text" name="item_description" value="<?php echo $data['item']->item_description; ?>"></td>
                              <td><input type="number" name="goal" value="<?php echo $data['item']->goal; ?>"></td>
