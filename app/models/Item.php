@@ -41,6 +41,14 @@ class Item extends \app\core\Model {
         $STMT->setFetchMode(\PDO::FETCH_CLASS,'app\\models\\Item');
         return $STMT->fetchAll();
     }
+	
+    public function get($item_id){
+	$SQL = 'SELECT * FROM Item WHERE item_id = :item_id';
+	$STMT = self::$_connection->prepare($SQL);
+	$STMT->execute(['item_id'=>$item_id]);
+	$STMT->setFetchMode(\PDO::FETCH_CLASS,'app\\models\\Item');
+	return $STMT->fetch();
+    }
 
     public function getDiscardedItems() {
         $SQL = "SELECT * FROM item where `type` = 'discard'";
@@ -76,11 +84,11 @@ class Item extends \app\core\Model {
         $STMT->execute(['item_name'=>$this->item_name, 'item_description'=>$this->item_description,'item_price'=>$this->item_price,'item_quantity'=>$this->item_quantity, 'filename'=>$this->filename, 'item_id'=>$this->item_id]);
     }
 	
-// Prospective Item
+    // Prospective Item
     public function insertProspectiveItem() {
-        $SQL = 'INSERT INTO item (item_name, type, item_description, item_price, item_quantity, goal, filename) VALUES (:item_name, :type, :item_description, :item_price, :item_quantity, :goal, :filename)';
+        $SQL = 'INSERT INTO item (item_name, type, item_description, goal, item_price, item_quantity, filename) VALUES (:item_name, :type, :item_description, :goal, :item_price, :item_quantity, :filename)';
         $STMT = self::$_connection->prepare($SQL);
-        $STMT->execute(['item_name'=>$this->item_name, 'type'=>$this->type, 'item_description'=>$this->item_description,'item_price'=>$this->item_price,'item_quantity'=>$this->item_quantity, 'goal'=>$this->goal, 'filename'=>$this->filename]);
+        $STMT->execute(['item_name'=>$this->item_name, 'type'=>$this->type, 'item_description'=>$this->item_description, 'goal'=>$this->goal, 'item_price'=>$this->item_price,'item_quantity'=>$this->item_quantity, 'filename'=>$this->filename]);
     }
 
     public function getProspectiveItems() {
@@ -90,19 +98,12 @@ class Item extends \app\core\Model {
         return $STMT->fetchAll();
     }
 
-    public function editProspectiveItem() {
-        $SQL = 'UPDATE `item` SET `item_name`=:item_name, `item_description`=:item_description, `item_price`=:item_price, `item_quantity`=:item_quantity, `goal`=:goal, `filename`=:filename WHERE item_id = :item_id';
+   public function editProspectiveItem() {
+        $SQL = 'UPDATE `item` SET `item_name`=:item_name, `item_description`=:item_description, `item_price`=:item_price, `item_quantity`=:item_quantity, `filename`=:filename WHERE item_id = :item_id';
         $STMT = self::$_connection->prepare($SQL);
-        $STMT->execute(['item_name'=>$this->item_name, 'type'=>$this->type, 'item_description'=>$this->item_description,'item_price'=>$this->item_price,'item_quantity'=>$this->item_quantity, 'goal'=>$this->goal, 'filename'=>$this->filename, 'item_id'=>$this->item_id]);
+        $STMT->execute(['item_name'=>$this->item_name, 'item_description'=>$this->item_description, 'goal'=>$this->goal,'item_price'=>$this->item_price,'item_quantity'=>$this->item_quantity, 'filename'=>$this->filename, 'item_id'=>$this->item_id]);
     }
-
-    public function get($item_id){
-		$SQL = 'SELECT * FROM Item WHERE item_id = :item_id';
-		$STMT = self::$_connection->prepare($SQL);
-		$STMT->execute(['item_id'=>$item_id]);
-		$STMT->setFetchMode(\PDO::FETCH_CLASS,'app\\models\\Item');
-		return $STMT->fetch();
-	}
+	
 
     public function delete($item_id){
 		$SQL = 'DELETE FROM `Item` WHERE item_id = :item_id';
