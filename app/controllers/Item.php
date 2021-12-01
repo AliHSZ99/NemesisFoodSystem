@@ -146,7 +146,7 @@ class Item extends \app\core\Controller {
                 if($check !== false && isset($mime_type_to_extension[$check['mime']])){
                     $extension = $mime_type_to_extension[$check['mime']];
                 }else{
-                    $this->view('Admin/Food/food', ['error'=>"Bad file type",'pictures'=>[]]);
+                    $this->view('Admin/index', ['error'=>"Bad file type",'pictures'=>[]]);
                     return;
                 }
                 
@@ -154,7 +154,7 @@ class Item extends \app\core\Controller {
                 $filepath = $this->folder.$filename;
 
                 if($_FILES['newPicture']['size'] > 4000000){
-                     $this->view('Admin/Food/food', ['error'=>"File too large",'pictures'=>[]]);
+                     $this->view('Admin/index', ['error'=>"File too large",'pictures'=>[]]);
                      return;
                 }
                 if(move_uploaded_file($_FILES['newPicture']['tmp_name'], $filepath)){
@@ -167,7 +167,7 @@ class Item extends \app\core\Controller {
                     $item->filename = "/".$this->folder.$filename;
                     $item->insertProspectiveItem();
 
-                    header('location:/Admin/index');
+                    header('location:/User/adminIndex');
                 } else{
                     echo "There was an error";
                 } 
@@ -195,7 +195,7 @@ class Item extends \app\core\Controller {
                 if($check !== false && isset($mime_type_to_extension[$check['mime']])){
                     $extension = $mime_type_to_extension[$check['mime']];
                 }else{
-                    $this->view('Admin/Food/food', ['error'=>"Bad file type",'pictures'=>[]]);
+                    $this->view('Admin/index', ['error'=>"Bad file type",'pictures'=>[]]);
                     return;
                 }
                 
@@ -203,7 +203,7 @@ class Item extends \app\core\Controller {
                 $filepath = $this->folder.$filename;
 
                 if($_FILES['newPicture']['size'] > 4000000){
-                     $this->view('Admin/Food/food', ['error'=>"File too large",'pictures'=>[]]);
+                     $this->view('Admin/index', ['error'=>"File too large",'pictures'=>[]]);
                      return;
                 }
                 if(move_uploaded_file($_FILES['newPicture']['tmp_name'], $filepath)){
@@ -216,7 +216,7 @@ class Item extends \app\core\Controller {
                     $item->item_id = $item_id;
                     $item->editProspectiveItem();
 
-                     header('location:/User/food');
+                     header('location:/User/adminIndex');
                 } else{
                     echo "There was an error";
                 } 
@@ -230,7 +230,7 @@ class Item extends \app\core\Controller {
                     $item->item_id = $item_id;
                     $item->editFoodItem();
 
-                    header('location:/User/food');
+                    header('location:/User/adminIndex');
             }
 
         }else //1 present a form to the user
@@ -240,7 +240,7 @@ class Item extends \app\core\Controller {
 	public function deleteProspectiveItem($item_id) {
         $Item = new \app\models\Item();
         $Item->delete($item_id);
-        header('location:/User/food');
+        header('location:/User/adminIndex');
     }
 
     public function editShoppingItem($item_id) {
