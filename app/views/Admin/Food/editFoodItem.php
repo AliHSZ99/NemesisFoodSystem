@@ -73,17 +73,34 @@
             </div>
         </div>
 
-        <div>
-            <h1>Edit a Food Item</h1>
-            <form action="" method="POST">
-                Name: <input type="text" name="item_name"><br>
-                Descrition: <input type="text" name="item_description"><br>
-                Price: <input type="number" name="item_price"><br>
-                Quantity: <input type="number" name="item_quantity"><br>
-                Set Goal: <input type="number" name="goal"><br>
-                Add A picture: <input type="file" name="filename"><br>
-                <input type="submit" name="action" value="Save Changes">
-            </form>
+        <!-- Food Edit -->
+        <div class="container">
+            <div class="row" style="margin-top: 5%">
+                <form action="" method="POST" enctype="multipart/form-data">
+                    <table class="table table-light table-hover">
+                        <tr class="table-secondary">
+                            <th>Images</th>
+                            <th>Name</th>
+                            <th>Description</th>
+                            <th>Price</th>
+                            <th>Quantity</th>
+                            <th>Actions</th>
+                        </tr>
+                        <tr>
+                            <td>
+                                <img src="<?=$data['item']->filename?>">
+                                <input type="file" name="newPicture"><br>
+
+                            </td>
+                            <td><input type="text" name="item_name" value="<?php echo $data['item']->item_name; ?>"></td>
+                            <td><input type="text" name="item_description" value="<?php echo $data['item']->item_description; ?>"></td>
+                            <td><input type="number" name="item_price" value="<?php echo $data['item']->item_price; ?>"></td>
+                            <td><input type="number" name="item_quantity" value="<?php echo $data['item']->item_quantity; ?>"></td>
+                            <td><input type='submit' name='action' value='Save'></td>
+                        </tr>
+                    </table>
+                </form>
+            </div>
         </div>
     </div>
 
