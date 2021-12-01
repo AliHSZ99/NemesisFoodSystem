@@ -99,7 +99,7 @@ class Item extends \app\core\Model {
     }
 
    public function editProspectiveItem() {
-        $SQL = 'UPDATE `item` SET `item_name`=:item_name, `item_description`=:item_description, `item_price`=:item_price, `item_quantity`=:item_quantity, `filename`=:filename WHERE item_id = :item_id';
+        $SQL = 'UPDATE `item` SET `item_name`=:item_name, `item_description`=:item_description, `goal`=:goal, `item_price`=:item_price, `item_quantity`=:item_quantity, `filename`=:filename WHERE item_id = :item_id';
         $STMT = self::$_connection->prepare($SQL);
         $STMT->execute(['item_name'=>$this->item_name, 'item_description'=>$this->item_description, 'goal'=>$this->goal,'item_price'=>$this->item_price,'item_quantity'=>$this->item_quantity, 'filename'=>$this->filename, 'item_id'=>$this->item_id]);
     }
