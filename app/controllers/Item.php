@@ -218,7 +218,7 @@ class Item extends \app\core\Controller {
                     $item->item_quantity = $_POST['item_quantity'];
                     $item->filename = "/".$this->folder.$filename;
                     $item->item_id = $item_id;
-                    $item->editFoodItem();
+                    $item->editProspectiveItem();
 
                      header('location:/User/food');
                 } else{
