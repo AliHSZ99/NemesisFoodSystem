@@ -56,11 +56,11 @@ class Item extends \app\core\Model {
         return $STMT->fetchAll();
     }
 
-    // Food Item
+   // Food Item
     public function insertFoodItem() {
-        $SQL = 'INSERT INTO item (item_name, type, item_description, item_price, item_quantity, goal, filename) VALUES (:item_name, :type, :item_description, :item_price, :item_quantity, :goal, :filename)';
+        $SQL = 'INSERT INTO item (item_name, type, item_description, item_price, item_quantity, filename) VALUES (:item_name, :type, :item_description, :item_price, :item_quantity, :filename)';
         $STMT = self::$_connection->prepare($SQL);
-        $STMT->execute(['item_name'=>$this->item_name, 'type'=>$this->type, 'item_description'=>$this->item_description,'item_price'=>$this->item_price,'item_quantity'=>$this->item_quantity, 'goal'=>$this->goal, 'filename'=>$this->filename]);
+        $STMT->execute(['item_name'=>$this->item_name, 'type'=>$this->type, 'item_description'=>$this->item_description,'item_price'=>$this->item_price,'item_quantity'=>$this->item_quantity, 'filename'=>$this->filename]);
     }
 
     public function getFoodItems() {
@@ -70,7 +70,27 @@ class Item extends \app\core\Model {
         return $STMT->fetchAll();
     }
 
-    public function editFoodItem() {
+   public function editFoodItem() {
+        $SQL = 'UPDATE `item` SET `item_name`=:item_name, `item_description`=:item_description, `item_price`=:item_price, `item_quantity`=:item_quantity, `filename`=:filename WHERE item_id = :item_id';
+        $STMT = self::$_connection->prepare($SQL);
+        $STMT->execute(['item_name'=>$this->item_name, 'item_description'=>$this->item_description,'item_price'=>$this->item_price,'item_quantity'=>$this->item_quantity, 'filename'=>$this->filename, 'item_id'=>$this->item_id]);
+    }
+	
+// Prospective Item
+    public function insertProspectiveItem() {
+        $SQL = 'INSERT INTO item (item_name, type, item_description, item_price, item_quantity, goal, filename) VALUES (:item_name, :type, :item_description, :item_price, :item_quantity, :goal, :filename)';
+        $STMT = self::$_connection->prepare($SQL);
+        $STMT->execute(['item_name'=>$this->item_name, 'type'=>$this->type, 'item_description'=>$this->item_description,'item_price'=>$this->item_price,'item_quantity'=>$this->item_quantity, 'goal'=>$this->goal, 'filename'=>$this->filename]);
+    }
+
+    public function getProspectiveItems() {
+        $SQL = "SELECT * FROM item WHERE `type` = 'prospective'";
+        $STMT = self::$_connection->query($SQL);
+        $STMT->setFetchMode(\PDO::FETCH_CLASS,'app\\models\\Item');
+        return $STMT->fetchAll();
+    }
+
+    public function editProspectiveItem() {
         $SQL = 'UPDATE `item` SET `item_name`=:item_name, `item_description`=:item_description, `item_price`=:item_price, `item_quantity`=:item_quantity, `goal`=:goal, `filename`=:filename WHERE item_id = :item_id';
         $STMT = self::$_connection->prepare($SQL);
         $STMT->execute(['item_name'=>$this->item_name, 'type'=>$this->type, 'item_description'=>$this->item_description,'item_price'=>$this->item_price,'item_quantity'=>$this->item_quantity, 'goal'=>$this->goal, 'filename'=>$this->filename, 'item_id'=>$this->item_id]);
