@@ -52,12 +52,12 @@
         <div class="container"> 
             <div class="row">
                 <div class="col-12 d-flex flex-row" style="margin-top: 5%;">
-                    <h1 id="foodTitle" style="color:white;">Food Inventory</h1> 
+                    <h1 id="foodTitle" style="color:white;">Shopping Items</h1> 
                     <div class="input-group rounded">
-                        <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search"
-                          aria-describedby="search-addon" />
-                        <span class="input-group-text border-0" id="search-addon">
-                        <i><img src="/images/search-icon.png"></i>
+                    <form action="/Item/searchShoppingItem" method="POST">
+                    <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search"
+                          aria-describedby="search-addon" name = 'search'/>
+        </form>
                         </span>
                     </div>
                 </div>
@@ -94,7 +94,7 @@
                         <td>$item->item_quantity</td>
                         <td>
                         <a href='/Item/deleteItem/$item->item_id' class='btn btn-danger' style='margin-right: 2%;'>Delete</a>
-                        <a href='/Item/editDiscardItem/$item->item_id' class='btn btn-primary' style='margin-right: 2%;''>Edit</a>
+                        <a href='/Item/editShoppingItem/$item->item_id' class='btn btn-primary' style='margin-right: 2%;''>Edit</a>
                         </td>
                         <br>
                     </tr>";
