@@ -45,7 +45,7 @@
         </div>
     </div>
 
-    <!-- Food Display -->
+    <!-- Prospective Display -->
     <div class="blue-box">
 
         <!-- Title and Search Bar -->
@@ -76,7 +76,7 @@
         <div>
 
             <h1>Add a Prospective Item</h1>
-            <form action="" method="POST">
+            <form action="" method="POST" enctype="multipart/form-data">
                 Name: <input type="text" name="item_name"><br>
                 Descrition: <input type="text" name="item_description"><br>
                 Price: <input type="number" name="item_price"><br>
