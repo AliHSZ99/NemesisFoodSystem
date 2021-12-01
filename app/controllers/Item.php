@@ -182,7 +182,7 @@ class Item extends \app\core\Controller {
         }
     }
 
-    public function editFoodItem($item_id) {
+    public function editProspectiveItem($item_id) {
 
         $item = new \app\models\Item();
         $item = $item->get($item_id);
