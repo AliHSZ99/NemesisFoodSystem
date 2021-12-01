@@ -15,7 +15,7 @@ class User extends \app\core\Controller {
     #[\app\filters\Customer]
     public function adminIndex() {
 	$item = new \app\models\Item();
-        $results = $item->getFoodItems();
+        $results = $item->getProspectiveItems();
         $this->view("Admin/index", $results);
     }
 
