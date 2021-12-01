@@ -43,11 +43,11 @@ class Item extends \app\core\Model {
     }
 	
     public function get($item_id){
-	$SQL = 'SELECT * FROM Item WHERE item_id = :item_id';
-	$STMT = self::$_connection->prepare($SQL);
-	$STMT->execute(['item_id'=>$item_id]);
-	$STMT->setFetchMode(\PDO::FETCH_CLASS,'app\\models\\Item');
-	return $STMT->fetch();
+	    $SQL = 'SELECT * FROM Item WHERE item_id = :item_id';
+	    $STMT = self::$_connection->prepare($SQL);
+	    $STMT->execute(['item_id'=>$item_id]);
+	    $STMT->setFetchMode(\PDO::FETCH_CLASS,'app\\models\\Item');
+	    return $STMT->fetch();
     }
 
     public function getDiscardedItems() {
@@ -99,7 +99,7 @@ class Item extends \app\core\Model {
     }
 
    public function editProspectiveItem() {
-        $SQL = 'UPDATE `item` SET `item_name`=:item_name, `item_description`=:item_description, `goal`=:goal, `item_price`=:item_price, `item_quantity`=:item_quantity, `filename`=:filename WHERE item_id = :item_id';
+        $SQL = 'UPDATE `item` SET `item_name`=:item_name, `item_description`=:item_description, `item_price`=:item_price, `item_quantity`=:item_quantity, `filename`=:filename WHERE item_id = :item_id';
         $STMT = self::$_connection->prepare($SQL);
         $STMT->execute(['item_name'=>$this->item_name, 'item_description'=>$this->item_description, 'goal'=>$this->goal,'item_price'=>$this->item_price,'item_quantity'=>$this->item_quantity, 'filename'=>$this->filename, 'item_id'=>$this->item_id]);
     }
@@ -111,5 +111,28 @@ class Item extends \app\core\Model {
 		$STMT->execute(['item_id'=>$item_id]);
 	}
 
+    
+   public function editShoppingItem() {
+    $SQL = 'UPDATE `item` SET `item_name`=:item_name, `item_description`=:item_description, `item_price`=:item_price, `item_quantity`=:item_quantity WHERE item_id = :item_id';
+    $STMT = self::$_connection->prepare($SQL);
+    $STMT->execute(['item_name'=>$this->item_name, 'item_description'=>$this->item_description,'item_price'=>$this->item_price,'item_quantity'=>$this->item_quantity, 'item_id'=>$this->item_id]);
+}
+
+    public function searchShoppingItem($search_term) {
+        $SQL = "SELECT * FROM Item WHERE item_name LIKE :search_term and `type` = 'shopping'";
+        $STMT = self::$_connection->prepare($SQL);
+        $STMT->execute(array(':search_term' => '%' . $search_term . '%'));
+        $STMT->setFetchMode(\PDO::FETCH_CLASS,'app\\models\\Item');
+        return $STMT->fetchAll();
+    }
+
+    public function searchDiscardItem($search_term) {
+        $SQL = "SELECT * FROM Item WHERE item_name LIKE :search_term and `type` = 'discard'";
+        $STMT = self::$_connection->prepare($SQL);
+        $STMT->execute(array(':search_term' => '%' . $search_term . '%'));
+        $STMT->setFetchMode(\PDO::FETCH_CLASS,'app\\models\\Item');
+        return $STMT->fetchAll();
+    }
 
 }
+
