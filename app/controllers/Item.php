@@ -158,6 +158,7 @@ class Item extends \app\core\Controller {
                      return;
                 }
                 if(move_uploaded_file($_FILES['newPicture']['tmp_name'], $filepath)){
+		    $item = new \app\models\Item();
                     $item->item_name = $_POST['item_name'];
                     $item->type = "prospective";
                     $item->item_description = $_POST['item_description'];
