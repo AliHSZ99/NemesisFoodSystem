@@ -93,8 +93,8 @@
                         <td>$item->item_price</td>
                         <td>$item->item_quantity</td>
                         <td>
-                        <a href='/Item/deleteItem/$item->item_id' class='btn btn-danger' style='margin-right: 2%;'>Delete</a>
-                        <a href='/Item/editShoppingItem/$item->item_id' class='btn btn-primary' style='margin-right: 2%;''>Edit</a>
+                        <a href='/Item/increment/$item->item_id' class='btn btn-primary' style='margin-right: 2%;'>Retrieve One From Discard</a>
+                        </th>
                         </td>
                         <br>
                     </tr>";
