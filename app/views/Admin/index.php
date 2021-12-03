@@ -81,10 +81,10 @@
                     <th style="width: 20%">Images</th>
                     <th style="width: 13%">Name</th>
                     <th style="width: 30%">Description</th>
-                    <th style="width:  8.33%">Price</th>
-                    <th>Quantity</th>
-                    <th>Goals</th>
-                    <th>Actions</th>
+                    <th style="width:  9%">Price</th>
+                    <th style="width:  9%">Quantity</th>
+                    <th style="width:  9%">Goals</th>
+                    <th style="width:  9%">Actions</th>
                 </tr>
             </table>
 
@@ -95,10 +95,10 @@
                             <th style="width: 20%"></th>
                             <th style="width: 13%"></th>
                             <th style="width: 30%"></th>
-                            <th style="width:  8.33%"></th>
-                            <th></th>
-                            <th></th>
-                            <th></th>
+                            <th style="width:  9%"></th>
+                            <th style="width:  9%"></th>
+                            <th style="width:  9%"></th>
+                            <th style="width:  9%"></th>
                         </tr>
                         <?php 
                             foreach($data as $results) {
