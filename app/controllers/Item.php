@@ -56,6 +56,7 @@ class Item extends \app\core\Controller {
                     $item->item_quantity = $_POST['item_quantity'];
                     $item->filename = "/".$this->folder.$filename;
                     $item->insertFoodItem();
+                    $item->insertDiscardItem();
 
                     header('location:/Admin/Food/food');
                 } else{
@@ -111,12 +112,17 @@ class Item extends \app\core\Controller {
                 } 
             } else {
                     $item = $item->get($item_id);
+                    $item2 = $item->get($item_id + 1);
                     $item->item_name = $_POST['item_name'];
                     $item->item_description = $_POST['item_description'];
                     $item->item_price = $_POST['item_price'];
                     $item->item_quantity = $_POST['item_quantity'];
                     $item->item_id = $item_id;
+                    $item2->item_name = $_POST['item_name'];
+                    $item2->item_description = $_POST['item_description'];
+                    $item2->item_price = $_POST['item_price'];
                     $item->editFoodItem();
+                    $item2->editFoodItem();
 
                     header('location:/User/food');
             }
@@ -128,8 +134,10 @@ class Item extends \app\core\Controller {
 	public function deleteFoodItem($item_id) {
         $Item = new \app\models\Item();
         $Item->delete($item_id);
+        $Item->delete($item_id + 1);
         header('location:/User/food');
     }
+	
 	
 	
     // Prospective Menu Functions //
@@ -307,6 +315,58 @@ class Item extends \app\core\Controller {
 
     public function redirect($location) {
         $this->view("Admin/$location");        
+    }
+
+    public function searchDiscardItem() {
+        $item = new \app\models\Item();
+        $results = $item->searchDiscardItem($_POST['search']);
+        $this->view('Admin/discarded', $results);
+    }
+
+    
+    public function searchShoppingItem() {
+        $item = new \app\models\Item();
+        $results = $item->searchShoppingItem($_POST['search']);
+        $this->view('Admin/shopping', $results);
+    }
+
+    public function deleteFromMenu($item_id) {
+        $item = new \app\models\Item();
+        $item->deleteFromMenu($item_id);
+        header('location:/Admin/Food/food');
+    }
+
+    public function decrement($item_id) {
+        $item = new \app\models\Item();
+        $item = $item->get($item_id);
+        $item2 = $item->get($item_id + 1);
+        $item->item_quantity = $item->item_quantity - 1;
+        $item2->item_quantity = $item2->item_quantity + 1;
+        $item->editFoodItem();
+        $item2->editFoodItem();
+        header('location:/Admin/Food/food');
+    }
+
+    public function increment($item_id) {
+        $item = new \app\models\Item();
+        $item = $item->get($item_id);
+        $item2 = $item->get($item_id - 1);
+        $item->item_quantity = $item->item_quantity - 1;
+        $item2->item_quantity = $item2->item_quantity + 1;
+        $item->editFoodItem();
+        $item2->editFoodItem();
+        header('location:/Admin/Food/food');
+    }
+
+    public function discardAll($item_id) {
+        $item = new \app\models\Item();
+        $item = $item->get($item_id);
+        $item2 = $item->get($item_id + 1);
+        $item2->item_quantity = $item2->item_quantity + $item->item_quantity;
+        $item->item_quantity = 0;
+        $item->editFoodItem();
+        $item2->editFoodItem();
+        header('location:/Admin/Food/food');
     }
 
 }
