@@ -51,7 +51,7 @@
         <!-- Title and Search Bar -->
         <div class="container"> 
             <div class="row">
-                <div class="col-12 d-flex flex-row" style="margin-top: 5%;">
+                <div class="col-12 d-flex flex-row" style="margin-top: 2%;">
                     <h1 id="foodTitle" style="color:white;">Prospective Menu</h1> 
                     <div class="input-group rounded">
                         <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search"
@@ -69,45 +69,59 @@
             <div class="row">
                 <div class="col-12 d-flex flex-row" style="margin-top: 5%;">
                     <a href="<?=BASE?>Item/addProspectiveItem" class="btn btn-success" style="margin-left: 85%; margin-right: 2%;">Add</a>
-                    <button class="btn btn-outline-light btn-lg" onclick="window.print()">Print</button>
+                    <button class="btn btn-outline-light" onclick="window.print()">Print</button>
                 </div>
             </div>
         </div>
 
         <!-- Prospective View -->
-        <div class="container">
-            <div class="row" style="margin-top: 5%">
-                    <table class="table table-light table-hover">
+        <div class="container" style="margin-top: 5%;">
+            <table class="table table-light table-hover" style="width: 85.9%; margin-left: 6.2%">
+                <tr class="table-secondary" style="table-layout: fixed;">
+                    <th style="width: 20%">Images</th>
+                    <th style="width: 13%">Name</th>
+                    <th style="width: 30%">Description</th>
+                    <th style="width:  8.33%">Price</th>
+                    <th>Quantity</th>
+                    <th>Goals</th>
+                    <th>Actions</th>
+                </tr>
+            </table>
+
+            <div class="row overflow-auto" style="width: 90%; height: 50%; margin-left: 5%">
+                <div class="">
+                    <table class="table table-light table-hover " style="table-layout: fixed;">
                         <tr class="table-secondary">
-                            <th>Images</th>
-                            <th>Name</th>
-                            <th>Description</th>
-                            <th>Price</th>
-                            <th>Quantity</th>
-                            <th>Goals</th>
-                            <th>Actions</th>
+                            <th style="width: 20%"></th>
+                            <th style="width: 13%"></th>
+                            <th style="width: 30%"></th>
+                            <th style="width:  8.33%"></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
                         </tr>
                         <?php 
                             foreach($data as $results) {
-                                echo " <tr> 
-                                            <td>
-                                                <img src='$results->filename' style='width:150px; height: 120px;'>
-                                            </td>
-                                            <td>$results->item_name</td>
-                                            <td>$results->item_description</td>
-                                            <td>$results->item_price</td>
-                                            <td>$results->item_quantity</td>
-                                            <td>$results->goal</td>
-                                            <td>
-                                                 <a href='/Item/deleteProspectiveItem/$results->item_id' class='btn btn-danger' style='margin-right: 2%;'>Delete</a>
-                                                 <a href='/Item/editProspectiveItem/$results->item_id' class='btn btn-primary' style='margin-right: 2%;''>Edit</a>
-                                            </td>
-                                        </tr>";
+                            echo " <tr> 
+                                        <td >
+                                            <img src='$results->filename' style='width:150px; height: 120px;'>
+                                        </td>
+                                        <td >$results->item_name</td>
+                                        <td style='word-wrap:break-word'>$results->item_description </td>
+                                        <td >$results->item_price</td>
+                                        <td >$results->item_quantity</td>
+                                        <td >$results->goal</td>
+                                        <td >
+                                            <a href='/Item/editProspectiveItem/$results->item_id' class='btn btn-primary' style='width:100%;''>Edit</a>
+                                             <a href='/Item/deleteProspectiveItem/$results->item_id' class='btn btn-danger mt-2' style='width:100%;'>Delete</a>
+                                        </td>
+                                    </tr>";
                             }
                         ?>
                     </table>
                 </div>
             </div>
+        </div>
     </div>
 
     <!-- black footer -->
