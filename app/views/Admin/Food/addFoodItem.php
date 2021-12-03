@@ -63,38 +63,78 @@
                 </div>
             </div>
         </div>
-
-        <!-- Print Button -->
-        <div class="container">
-            <div class="row">
-                <div class="col-12 d-flex flex-row" style="margin-top: 5%;">
-                    <button class="btn btn-outline-light btn-lg" onclick="window.print()" style="margin-left: 90%">Print</button>
-                </div>
-            </div>
-        </div>
-
+        <br>
+        
        <!-- Food Add -->
         <div class="container">
             <div class="row" style="margin-top: 5%">
                 <form action="" method="POST" enctype="multipart/form-data">
-                    <table class="table table-light table-hover">
-                        <tr class="table-secondary">
-                            <th>Images</th>
-                            <th>Name</th>
-                            <th>Description</th>
-                            <th>Price</th>
-                            <th>Quantity</th>
-                            <th>Actions</th>
-                        </tr>
-                        <tr>
-                            <td><input type="file" name="newPicture"></td>
-                            <td><input type="text" name="item_name"></td>
-                            <td><input type="text" name="item_description"></td>
-                            <td><input type="number" name="item_price"></td>
-                            <td><input type="number" name="item_quantity"></td>
-                            <td><input type='submit' name='action' value='Post'></td>
-                        </tr>
-                    </table>
+                    <div class="container" style="width: 95%;">
+                        <div class="row">
+                            <div class="col-12 d-flex flex-row" style="margin-left: 5%;">
+                                <div style="width: 40%;">
+                                    <h4> Add Image</h4>
+                                </div>
+                                <div>
+                                    <h4> Description</h4>
+                                </div>
+                            </div>
+                        </div>
+
+                         <div class="row">
+                            <div class="col-12 d-flex flex-row">
+                                <div class="col-12 d-flex flex-row" style="margin-left: 5%">
+                                    <div style="width: 40%">
+                                         <img src='$results->filename' style='width:150px; height: 120px;'>
+                                    </div>
+                                    <div style="width: 50%">
+                                        <textarea type="text" name="item_description" style="width: 100%; height: 100%;"></textarea>
+                                    </div>
+                                 </div>
+                            </div>
+                        </div>
+
+                        <br><br>
+                         <div class="row">
+                            <div class="col-12 d-flex flex-row" style="margin-left: 5%">
+                                <input type="file" name="newPicture">
+                            </div>
+                        </div>
+
+                        <br><br>
+                        <div class="row">
+                            <div class="col-12 d-flex flex-row" style="margin-left: 5%">
+                                <div style="width: 40%">
+                                     <h4> Menu Item Name</h4>
+                                </div>
+                                <div style="width: 20%">
+                                    <h4> Price</h4>
+                                </div>
+                                <div style="width: 20%">
+                                    <h4> Quantity</h4>
+                                </div> 
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-12 d-flex flex-row" style="margin-left: 5%">
+                                <div style="width: 40%">
+                                     <input type="text" name="item_name" style="width: 60%;">
+                                </div>
+                                <div style="width: 20%">
+                                    <input type="number" name="item_price" style="width: 30%;">
+                                </div>
+                                <div style="width: 20%">
+                                    <input type="number" name="item_quantity" style="width: 35%;">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <br><br>
+                    <div style="margin-left: 90%">
+                        <input type='submit' name='action' value='Post' class="btn btn-success">
+                    </div> 
                 </form>
             </div>
         </div>
