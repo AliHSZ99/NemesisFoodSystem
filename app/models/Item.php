@@ -51,7 +51,7 @@ class Item extends \app\core\Model {
     }
 
     public function getDiscardedItems() {
-        $SQL = "SELECT * FROM item where `type` = 'discard'";
+        $SQL = "SELECT * FROM item where `type` = 'discard' and `item_quantity` > 0";
         $STMT = self::$_connection->query($SQL);
         $STMT->setFetchMode(\PDO::FETCH_CLASS,'app\\models\\Item');
         return $STMT->fetchAll();
@@ -134,5 +134,17 @@ class Item extends \app\core\Model {
         return $STMT->fetchAll();
     }
 
-}
+    public function insertDiscardItem() {
+        $SQL = 'INSERT INTO item (item_name, type, item_description, item_price, item_quantity, filename) VALUES (:item_name, :type, :item_description, :item_price, :item_quantity, :filename)';
+        $STMT = self::$_connection->prepare($SQL);
+        $STMT->execute(['item_name'=>$this->item_name, 'type'=>'discard', 'item_description'=>$this->item_description,'item_price'=>$this->item_price,'item_quantity'=>0, 'filename'=>$this->filename]);
+    }
 
+    //Deletes item from menu and discard when item from menu is deleted
+    public function deleteFromMenu() {
+        $SQL = 'UPDATE item SET item_quantity = item_quantity + 1 where item_id = :item_id + 1;';
+        $STMT = self::$_connection->prepare($SQL);
+        $STMT->execute(['item_id'=>$this->item_id,'item_quantity'=>$this->item_quantity]);
+    }
+
+}
