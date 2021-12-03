@@ -109,6 +109,8 @@
                                         <td>
                                              <a href='/Item/editFoodItem/$results->item_id' class='btn btn-primary' style='width:100%;'>Edit</a>
                                              <a href='/Item/deleteFoodItem/$results->item_id' class='btn btn-danger mt-2' style='width:100%; '>Delete</a>
+                                             <a href='/Item/decrement/$results->item_id' class='btn btn-danger mt-2' style='width:100%; '>Discard</a>
+                                             <a href='/Item/discardAll/$results->item_id' class='btn btn-danger mt-2' style='width:100%;'width:100%;'>Discard all</a>
                                         </td>
                                     </tr>";
                             }
