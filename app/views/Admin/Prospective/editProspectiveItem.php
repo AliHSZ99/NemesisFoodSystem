@@ -63,44 +63,84 @@
                 </div>
             </div>
         </div>
-
-        <!-- Print Button -->
-        <div class="container">
-            <div class="row">
-                <div class="col-12 d-flex flex-row" style="margin-top: 5%;">
-                    <button class="btn btn-outline-light btn-lg" onclick="window.print()" style="margin-left: 90%">Print</button>
-                </div>
-            </div>
-        </div>
+        <br>
 
         <!-- Prospective Edit -->
         <div class="container">
             <div class="row" style="margin-top: 5%">
                 <form action="" method="POST" enctype="multipart/form-data">
-                    <table class="table table-light table-hover">
-                        <tr class="table-secondary">
-                            <th>Images</th>
-                            <th>Name</th>
-                            <th>Description</th>
-                            <th>Goal</th>
-                            <th>Price</th>
-                            <th>Quantity</th>
-                            <th>Actions</th>
-                        </tr>
-                        <tr>
-                            <td>
-                                <img src="<?=$data['item']->filename?>" style="width:150px; height: 120px;">
-                                <input type="file" name="newPicture"><br>
+                     <div class="container" style="width: 95%;">
+                        <div class="row">
+                            <div class="col-12 d-flex flex-row" style="margin-left: 5%;">
+                                <div style="width: 40%;">
+                                    <h4> Add Image</h4>
+                                </div>
+                                <div>
+                                    <h4> Description</h4>
+                                </div>
+                            </div>
+                        </div>
 
-                            </td>
-                            <td><input type="text" name="item_name" value="<?php echo $data['item']->item_name; ?>"></td>
-                            <td><input type="text" name="item_description" value="<?php echo $data['item']->item_description; ?>"></td>
-                             <td><input type="number" name="goal" value="<?php echo $data['item']->goal; ?>"></td>
-                            <td><input type="number" name="item_price" value="<?php echo $data['item']->item_price; ?>"></td>
-                            <td><input type="number" name="item_quantity" value="<?php echo $data['item']->item_quantity; ?>"></td>
-                            <td><input type='submit' name='action' value='Save'></td>
-                        </tr>
-                    </table>
+                         <div class="row">
+                            <div class="col-12 d-flex flex-row">
+                                <div class="col-12 d-flex flex-row" style="margin-left: 5%">
+                                    <div style="width: 40%">
+                                         <img src="<?=$data['item']->filename?>" style="width:150px; height: 120px;">
+                                    </div>
+                                    <div style="width: 50%">
+                                        <input type="text" name="item_description" value="<?php echo $data['item']->item_description; ?>" style="width: 100%; height: 100%;">
+                                    </div>
+                                 </div>
+                            </div>
+                        </div>
+
+                        <br><br>
+                         <div class="row">
+                            <div class="col-12 d-flex flex-row" style="margin-left: 5%">
+                                <input type="file" name="newPicture">
+                            </div>
+                        </div>
+
+                        <br><br>
+                        <div class="row">
+                            <div class="col-12 d-flex flex-row" style="margin-left: 5%">
+                                <div style="width: 40%">
+                                     <h4> Prospective Item Name</h4>
+                                </div>
+                                <div style="width: 20%">
+                                    <h4> Price</h4>
+                                </div>
+                                <div style="width: 20%">
+                                    <h4> Quantity</h4>
+                                </div>
+                                <div>
+                                    <h4> Goals</h4>
+                                </div>  
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-12 d-flex flex-row" style="margin-left: 5%">
+                                <div style="width: 40%">
+                                    <input type="text" name="item_name" value="<?php echo $data['item']->item_name; ?>" style="width: 60%;">
+                                </div>
+                                <div style="width: 20%">
+                                    <input type="number" name="item_price" value="<?php echo $data['item']->item_price; ?>" style="width: 40%;">
+                                </div>
+                                <div style="width: 20%">
+                                    <input type="number" name="item_quantity" value="<?php echo $data['item']->item_quantity; ?>" style="width: 50%;">
+                                </div>
+                                <div>
+                                    <input type="number" name="goal" value="<?php echo $data['item']->goal; ?>" style="width: 35%;">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <br><br>
+                    <div style="margin-left: 90%">
+                        <input type='submit' name='action' value='Save' class="btn btn-success">
+                    </div>
                 </form>
             </div>
         </div>
