@@ -273,50 +273,50 @@ class Item extends \app\core\Controller {
 		header('location:/Admin/shopping');
     }
 
-    //For Item we don't need delete, edit, add methods for each type.
-    
-    public function addItem() {
+    //Conrad's Methods
+    public function addItem($type) {
         if(isset($_POST['action'])){
-            $item = new \app\models\Item();
+            $item = new \app\models\Item();            
             $item->item_name = $_POST['item_name'];
-            $item->type = "shopping";
+            $item->type = $type;
+            $type = strtolower($item->type);            
             $item->item_description = $_POST['item_description'];
             $item->item_price = $_POST['item_price'];
             $item->item_quantity = $_POST['item_quantity'];
-            $item->insertShoppingItem();
-
-            header('location:/Admin/index');
-
-        }else //1 present a form to the user
-            $this->view('Admin/addShoppingItem');
+            $item->insertItem();
+            header('location:/User/'.$type);        
+        } else $this->view('Admin/addShoppingItem');
     }
 
-    public function editItem() {
-            $item = new \app\models\Item();
-            $item = $item->get("4");    
+    public function editItem($item_id) {
+        $item = new \app\models\Item();
+        $item = $item->get($item_id);
+        $type = strtolower($item->type);
 
-        if(isset($_POST["saveChanges4"])){        
-            $item->item_name = $_POST["item_name$item->item_id"];
-            $item->item_quantity = $_POST["item_quantity$item->item_id"];
-            $item->item_description = $_POST["item_description$item->item_id"];
-            $item->item_price = $_POST["item_price$item->item_id"];
-            $item->update();
-            header('location:/Admin/cleaning');
-        } else {
-            $this->view("Admin/editCleaning");                    
-        }
+        if(isset($_POST['action'])){
+            $item->item_name = $_POST['item_name'];
+            $item->item_quantity = $_POST['item_quantity'];
+            $item->item_description = $_POST['item_description'];
+            $item->item_price = $_POST['item_price'];
+            $item->updateItem();
+            header('location:/User/'.$type);        
+        } else $this->view("Admin/editItem",$item);                    
     }
 
     public function deleteItem($item_id) {
-        $Item = new \app\models\Item();
-        $Item->delete($item_id);
-        header('location:/Admin/cleaning');
+        $item = new \app\models\Item();
+        $item = $item->get($item_id);
+        $type = strtolower($item->type);
+        $item->delete($item_id);
+        header('location:/User/'.$type);        
+
     }
 
     public function redirect($location) {
         $this->view("Admin/$location");        
     }
 
+    //Other
     public function searchDiscardItem() {
         $item = new \app\models\Item();
         $results = $item->searchDiscardItem($_POST['search']);

@@ -1,7 +1,5 @@
 /* CSS FOR LOGIN SCREEN */
 
-/* We can't have repeating CSS elements they override each other. */
-
 .loginregister {
     background-color: #00003a;
     height: 185px;

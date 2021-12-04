@@ -19,6 +19,51 @@ class Item extends \app\core\Model {
         parent::__construct();
     }
     
+
+
+    //Conrad Methods
+    public function get($item_id){
+        $SQL = 'SELECT * FROM Item WHERE item_id = :item_id';
+        $STMT = self::$_connection->prepare($SQL);
+        $STMT->execute(['item_id'=>$item_id]);
+        $STMT->setFetchMode(\PDO::FETCH_CLASS,'app\\models\\Item');
+        return $STMT->fetch();
+    }
+
+    public function getItemByType($type) {
+        $SQL = 'SELECT * FROM item where type = :type';
+        $STMT = self::$_connection->prepare($SQL);
+        $STMT->execute(['type'=>$type]);
+        $STMT->setFetchMode(\PDO::FETCH_CLASS,'app\\models\\Item');
+        return $STMT->fetchAll();
+    }
+
+    public function insertItem() {
+        $SQL = 'INSERT INTO item (item_name, type, item_description, item_price, item_quantity) VALUES (:item_name, :type, :item_description, :item_price, :item_quantity)';
+        $STMT = self::$_connection->prepare($SQL);
+        $STMT->execute(['item_name'=>$this->item_name, 'type'=>$this->type, 'item_description'=>$this->item_description,'item_price'=>$this->item_price,'item_quantity'=>$this->item_quantity]);
+    }
+
+   public function updateItem() {
+        $SQL = 'UPDATE `item` SET `item_name`=:item_name, `item_description`=:item_description, `item_price`=:item_price, `item_quantity`=:item_quantity, `filename`=:filename WHERE item_id = :item_id';
+        $STMT = self::$_connection->prepare($SQL);
+        $STMT->execute(['item_name'=>$this->item_name, 'item_description'=>$this->item_description,'item_price'=>$this->item_price,'item_quantity'=>$this->item_quantity, 'filename'=>$this->filename, 'item_id'=>$this->item_id]);
+    }
+
+    public function delete($item_id){
+        $SQL = 'DELETE FROM `Item` WHERE item_id = :item_id';
+        $STMT = self::$_connection->prepare($SQL);
+        $STMT->execute(['item_id'=>$item_id]);
+    }
+    //
+
+
+
+
+
+
+
+
     public function insertShoppingItem() {
         $SQL = 'INSERT INTO item (item_name, type, item_description, item_price, item_quantity) VALUES (:item_name, :type, :item_description, :item_price, :item_quantity)';
         $STMT = self::$_connection->prepare($SQL);
@@ -32,23 +77,7 @@ class Item extends \app\core\Model {
         $STMT->execute(['item_name'=>$item_name]);
         $STMT->setFetchMode(\PDO::FETCH_CLASS,'app\\models\\Item');
         return $STMT->fetchAll();
-    }
-
-    public function getItemByType($type) {
-        $SQL = 'SELECT * FROM item where type = :type';
-        $STMT = self::$_connection->prepare($SQL);
-        $STMT->execute(['type'=>$type]);
-        $STMT->setFetchMode(\PDO::FETCH_CLASS,'app\\models\\Item');
-        return $STMT->fetchAll();
-    }
-	
-    public function get($item_id){
-	    $SQL = 'SELECT * FROM Item WHERE item_id = :item_id';
-	    $STMT = self::$_connection->prepare($SQL);
-	    $STMT->execute(['item_id'=>$item_id]);
-	    $STMT->setFetchMode(\PDO::FETCH_CLASS,'app\\models\\Item');
-	    return $STMT->fetch();
-    }
+    }	
 
     public function getDiscardedItems() {
         $SQL = "SELECT * FROM item where `type` = 'discard' and `item_quantity` > 0";
@@ -103,15 +132,7 @@ class Item extends \app\core\Model {
         $STMT = self::$_connection->prepare($SQL);
         $STMT->execute(['item_name'=>$this->item_name, 'item_description'=>$this->item_description, 'goal'=>$this->goal,'item_price'=>$this->item_price,'item_quantity'=>$this->item_quantity, 'filename'=>$this->filename, 'item_id'=>$this->item_id]);
     }
-	
-
-    public function delete($item_id){
-		$SQL = 'DELETE FROM `Item` WHERE item_id = :item_id';
-		$STMT = self::$_connection->prepare($SQL);
-		$STMT->execute(['item_id'=>$item_id]);
-	}
-
-    
+  
    public function editShoppingItem() {
     $SQL = 'UPDATE `item` SET `item_name`=:item_name, `item_description`=:item_description, `item_price`=:item_price, `item_quantity`=:item_quantity WHERE item_id = :item_id';
     $STMT = self::$_connection->prepare($SQL);

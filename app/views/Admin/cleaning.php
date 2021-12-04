@@ -46,56 +46,70 @@
     </div>
 
     <div class="blue-box" style="border:20px solid white">
-        <br>            
-        <h1 class="PageHeader text-center">Cleaning Supplies</h1>                
-        <br>
-        <div id="outer">
-            <div class="inner" style="margin-left: 50%">
-                <form action="" method="POST">
-                    <input name="searchQuery" type="search">
-                    <button name="searchButton" id="" class="" type="submit" >Search</button>
-                    <a href="/Item/addItem/"><img src='/images/plus-icon.png' alt='add' style='width:42px;height:42px;'></a>
-                    <button class="btn btn-outline-light btn-lg" onclick="window.print()" style="">Print</button>
-                </form>                                
+
+        <div class="container"> 
+            <div class="row">
+                <div class="col-12 d-flex flex-row" style="margin-top: 2%;">
+                    <h1 id="foodTitle" style="color:white;"><?=basename(__FILE__, '.php')?></h1> 
+                    <div class="input-group rounded">
+                        <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search"
+                          aria-describedby="search-addon"/>
+                        <span class="input-group-text border-0" id="search-addon">
+                        <i><img src="/images/search-icon.png"></i>
+                        </span>
+                    </div>
+                </div>
             </div>
-        </div>                
-        <div><br>          
-            <center>
-                <table style="border:2px solid black; background-color: white;">
-                    <thead>
-                        <tr>
-                            <th>Name</th>
-                            <th>Description</th>
-                            <th>Price</th>
-                            <th>Quantity</th>
-                            <th>Actions</th>
+        </div>
 
-                        </tr>
-                    </thead>
-                    <tbody>
-                   <form action='' method='POST'>
-                <?php
+        <!-- Add Button and Print Button -->
+        <div class="container">
+            <div class="row">
+                <div class="col-12 d-flex flex-row" style="margin-top: 5%;">
+                    <a href="<?=BASE?>Item/addItem/<?=basename(__FILE__, '.php')?>" class="btn btn-success" style="margin-left: 85%; margin-right: 2%; vertical-align: middle;">Add</a>
+                    <button class="btn btn-outline-light" onclick="window.print()" >Print</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Food View -->
+        <div class="container" style="margin-top: 5%;">
+            <table class="table table-light table-hover" style="width: 87.7%; margin-left: 6.2%">
+                <tr class="table-secondary" style="table-layout: fixed;">
+                    <!--UNCOMMENT FOR PAGE WITH IMAGE <th>Images</th>!-->
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                    <th>Actions</th>
+                </tr>
+                <?php 
                     $items = new \app\models\Item();
-                    $items = $items->getItemByType("cleaning");
-
+                    $items = $items->getItemByType(basename(__FILE__, '.php'));
                     foreach ($items as $item) { 
-                        echo "<tr>
-                            <td><input disabled type='text' id='' value='$item->item_name' name=''></td>
-                            <td><input disabled type='text' id='' value='$item->item_description' name=''></td>
-                            <td><input disabled type='text' id='' value='$item->item_price' name=''></td>
-                            <td><input disabled type='text' id='' value='$item->item_quantity' name=''></td>
-                            <td>
-                                <a href='/Item/editItem'><img src='/images/pencil-icon.png' alt='edit' style='width:42px;height:42px;'></a>
-                                <a href='/Item/deleteItem/$item->item_id'><img src='/images/delete-icon.png' alt='delete' style='width:42px;height:42px;'></a>
-                            </td>                           
-                            </tr>";
-                    }
-                ?>
-                </form>                         
-                    </tbody>
-                </table>
-            </center>
-        </div>                    
+                            echo " <tr> ";
+                            /*echo "
+                                        <td>
+                                        <img src='$item->filename' style='width:150px; height: 120px;'>
+                                        </td>"; UNCOMMENT FOR PAGE WITH IMAGE*/
+                            echo "
+                                        <td>$item->item_name</td>
+                                        <td style='word-wrap:break-word'>$item->item_description</td>
+                                        <td>$item->item_price</td>
+                                        <td>$item->item_quantity</td>
+                                        <td>
+                                             <a href='/Item/editItem/$item->item_id' class='btn btn-primary'>Edit</a>
+                                             <a href='/Item/deleteItem/$item->item_id' class='btn btn-danger mt-2'>Delete</a> ";
+                            echo "
+                                             <a href='/Item/decrement/$item->item_id' class='btn btn-danger mt-2'>Discard</a>
+                                             <a href='/Item/discardAll/$item->item_id' class='btn btn-danger mt-2'>Discard all</a>";
+
+                            echo "      </td>
+                                   </tr>";
+                            }
+                        ?>
+            </table>
+        </div>                
     </div>
 
     <!-- black footer -->

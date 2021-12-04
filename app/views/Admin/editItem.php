@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link rel="stylesheet" href="/app/css/styles.css">
-    <title>Ingredients</title>
+    <title>Cleaning Supplies</title>
 </head>
 
 <body>
@@ -25,7 +25,7 @@
             <hr class="admin-hr">
             <a href="<?=BASE?>User/cleaning">Cleaning Supplies</a>
             <hr class="admin-hr">
-            <a style="color: #2fadfc;" href="<?=BASE?>User/ingredients">Ingredients</a>
+            <a href="<?=BASE?>User/ingredients">Ingredients</a>
             <hr class="admin-hr">
             <a href="<?=BASE?>User/shopping">Shopping List</a>
             <hr class="admin-hr">
@@ -33,7 +33,7 @@
             <hr class="admin-hr">
             <a href="<?=BASE?>User/customers">Customers</a>
         </div>
-
+        <!-- !-->
         </center>
         <hr>
         <div class="text-center setting-logout-position-admin">
@@ -46,28 +46,10 @@
     </div>
 
     <div class="blue-box" style="border:20px solid white">
-
         <div class="container"> 
             <div class="row">
                 <div class="col-12 d-flex flex-row" style="margin-top: 2%;">
-                    <h1 id="foodTitle" style="color:white;"><?=basename(__FILE__, '.php')?></h1> 
-                    <div class="input-group rounded">
-                        <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search"
-                          aria-describedby="search-addon"/>
-                        <span class="input-group-text border-0" id="search-addon">
-                        <i><img src="/images/search-icon.png"></i>
-                        </span>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Add Button and Print Button -->
-        <div class="container">
-            <div class="row">
-                <div class="col-12 d-flex flex-row" style="margin-top: 5%;">
-                    <a href="<?=BASE?>Item/addItem/<?=basename(__FILE__, '.php')?>" class="btn btn-success" style="margin-left: 85%; margin-right: 2%; vertical-align: middle;">Add</a>
-                    <button class="btn btn-outline-light" onclick="window.print()" >Print</button>
+                    <h1 class="PageHeader text-center">Editing Cleaning Supplies</h1>                              
                 </div>
             </div>
         </div>
@@ -83,33 +65,31 @@
                     <th>Quantity</th>
                     <th>Actions</th>
                 </tr>
+                <form action='' method='POST' enctype="multipart/form-data">                        
                 <?php 
-                    $items = new \app\models\Item();
-                    $items = $items->getItemByType(basename(__FILE__, '.php'));
-                    foreach ($items as $item) { 
-                            echo " <tr> ";
-                            /*echo "
-                                        <td>
-                                        <img src='$item->filename' style='width:150px; height: 120px;'>
-                                        </td>"; UNCOMMENT FOR PAGE WITH IMAGE*/
-                            echo "
-                                        <td>$item->item_name</td>
-                                        <td style='word-wrap:break-word'>$item->item_description</td>
-                                        <td>$item->item_price</td>
-                                        <td>$item->item_quantity</td>
-                                        <td>
-                                             <a href='/Item/editItem/$item->item_id' class='btn btn-primary'>Edit</a>
-                                             <a href='/Item/deleteItem/$item->item_id' class='btn btn-danger mt-2'>Delete</a> ";
-                            echo "
-                                             <a href='/Item/decrement/$item->item_id' class='btn btn-danger mt-2'>Discard</a>
-                                             <a href='/Item/discardAll/$item->item_id' class='btn btn-danger mt-2'>Discard all</a>";
-
-                            echo "      </td>
-                                   </tr>";
-                            }
-                        ?>
-            </table>
-        </div>                
+                    $item = $data;
+                echo "<tr>";
+                /*echo "
+                       <td>
+                        <img src='$item->filename' style='width:150px; height: 120px;'>
+                        </td>"; UNCOMMENT FOR PAGE WITH IMAGE*/
+                echo "
+                        <td><input name='item_name' type='text' id='' value='$item->item_name'></td>
+                        <td style='word-wrap:break-word'><input name='item_description' type='text' id='' value='$item->item_description'></td>
+                        <td><input name='item_price' type='text' id='' value='$item->item_price'></td>
+                        <td><input name='item_quantity' type='text' id='' value='$item->item_quantity'></td>
+                        <td>
+                            <input name='action' type='submit' value='save'/>
+                            <a href='/Item/deleteItem/$item->item_id'><img src='/images/delete-icon.png' alt='delete' style='width:42px;height:42px;'></a>";
+                /*echo "
+                        <a href='/Item/decrement/$item->item_id' class='btn btn-danger mt-2' style='width:100%; '>Discard</a>
+                        <a href='/Item/discardAll/$item->item_id' class='btn btn-danger mt-2' style='width:100%;'width:100%;'>Discard all</a>";*/
+                echo "  </td>
+                        </tr>";
+                ?>
+                </form>                                            
+            </table> <!-- POSSIBLE BUTTON GOTTA FIX: <input name='action' type='submit' value='save' style='width:42px; height:42 px;background: url(/images/save-icon.png)'/> !-->
+        </div>                      
     </div>
 
     <!-- black footer -->
