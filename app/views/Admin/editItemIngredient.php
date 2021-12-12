@@ -50,6 +50,7 @@
 
         <!-- Title -->
         <div class="container"> 
+
             <div class="row">
                 <div class="col-12 d-flex flex-row" style="margin-top: 5%; margin-left: 5%;">
                     <h1 id="foodTitle" style="color:white;">Edit Ingredient</h1> 
@@ -60,6 +61,21 @@
         
        <!-- Food Add -->
         <div class="container">
+        <?php
+        if (is_array($data)) {
+            $error = $data["error"];
+            echo "<h4>$error</h4>";
+            $desc = $data["item"]->item_description;
+            $name = $data["item"]->item_name;
+            $price = $data["item"]->item_price;
+            $quantity = $data["item"]->item_quantity;
+        } else {
+            $desc = $data->item_description;
+            $name = $data->item_name;
+            $price = $data->item_price;
+            $quantity = $data->item_quantity;
+        }
+        ?>            
         <div class="row" style="margin-top: 5%;background-color: 
             #F5F5F5;padding-top: 5%;padding-bottom: 5%;border: 2mm solid black;">
                 <form action="" method="POST" enctype="multipart/form-data">
@@ -75,7 +91,7 @@
                             <div class="col-12 d-flex flex-row">
                                 <div class="col-12 d-flex flex-row" style="margin-left: 5%">
                                     <div style="width: 50%">
-                                        <textarea required type="text" name="item_description" style="width: 100%; height: 100%; resize:none;"><?php echo $data->item_description?></textarea>
+                                        <textarea required type="text" name="item_description" style="width: 100%; height: 100%; resize:none;"><?php echo $desc ?></textarea>
                                     </div>
                                  </div>
                             </div>
@@ -103,13 +119,13 @@
                         <div class="row">
                             <div class="col-12 d-flex flex-row" style="margin-left: 5%">
                                 <div style="width: 40%">
-                                     <input value = <?php echo $data->item_name?> required type="text" name="item_name" style="width: 60%;">
+                                     <input value = <?php echo $name?> required type="text" name="item_name" style="width: 60%;">
                                 </div>
                                 <div style="width: 20%">
-                                    <input value = <?php echo $data->item_price?> required type="number" min="0" step=".01" name="item_price" style="width: 30%;">
+                                    <input value = <?php echo $price?> required type="number" min="0" step=".01" name="item_price" style="width: 30%;">
                                 </div>
                                 <div style="width: 20%">
-                                    <input value = <?php echo $data->item_quantity?> required type="number" min="0" name="item_quantity" style="width: 35%;">
+                                    <input value = <?php echo $quantity?> required type="number" min="0" name="item_quantity" style="width: 35%;">
                                 </div>
                             </div>
                         </div>

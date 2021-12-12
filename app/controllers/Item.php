@@ -278,6 +278,18 @@ class Item extends \app\core\Controller {
     //Conrad's Methods
     public function addIngredientItem() {
         if(isset($_POST['action'])){
+
+            // check if any textbox is empty 
+            if (empty($_POST['item_name']) || empty($_POST['item_quantity']) || empty($_POST['item_description']) || empty($_POST['item_price'])) {
+                $this->view("Admin/addIngredientItem", "All fields are required");
+                return;
+            }
+            // check item name for weird characters
+            if (!preg_match('/^[\w\s&.\-]+$/', $_POST["item_name"])) {
+                $this->view("Admin/addIngredientItem", "Invalid Item Name");
+                return;
+            }
+
             $item = new \app\models\Item();            
             $item->item_name = $_POST['item_name'];
             $item->type ='ingredients';
@@ -295,6 +307,18 @@ class Item extends \app\core\Controller {
 
     public function addCleaningItem() {
         if(isset($_POST['action'])){
+
+            // check if any textbox is empty 
+            if (empty($_POST['item_name']) || empty($_POST['item_quantity']) || empty($_POST['item_description']) || empty($_POST['item_price'])) {
+                $this->view("Admin/addCleaningItem", "All fields are required");
+                return;
+            }
+            // check item name for weird characters
+            if (!preg_match('/^[\w\s&.\-]+$/', $_POST["item_name"])) {
+                $this->view("Admin/addCleaningItem", "Invalid Item Name");
+                return;
+            }
+
             $item = new \app\models\Item();            
             $item->item_name = $_POST['item_name'];
             $item->type = 'cleaning';
@@ -316,6 +340,18 @@ class Item extends \app\core\Controller {
         $type = strtolower($item->type);
 
         if(isset($_POST['action'])){
+
+            // check if any textbox is empty 
+            if (empty($_POST['item_name']) || empty($_POST['item_quantity']) || empty($_POST['item_description']) || empty($_POST['item_price'])) {
+                $this->view("Admin/editItem", $results = array("error"=>"All fields are required", "item"=>$item));
+                return;
+            }
+            // check item name for weird characters
+            if (!preg_match('/^[\w\s&.\-]+$/', $_POST["item_name"])) {
+                $this->view("Admin/editItem", $results = array("error"=>"Invalid Item Name", "item"=>$item));
+                return;
+            } 
+
             $item->item_name = $_POST['item_name'];
             $item->item_quantity = $_POST['item_quantity'];
             $item->item_description = $_POST['item_description'];
@@ -338,6 +374,18 @@ class Item extends \app\core\Controller {
         $type = strtolower($item->type);
 
         if(isset($_POST['action'])){
+
+            // check if any textbox is empty 
+            if (empty($_POST['item_name']) || empty($_POST['item_quantity']) || empty($_POST['item_description']) || empty($_POST['item_price'])) {
+                $this->view("Admin/editItemIngredient", $results = array("error"=>"All fields are required", "item"=>$item));
+                return;
+            }
+            // check item name for weird characters
+            if (!preg_match('/^[\w\s&.\-]+$/', $_POST["item_name"])) {
+                $this->view("Admin/editItemIngredient", $results = array("error"=>"Invalid Item Name", "item"=>$item));
+                return;
+            } 
+
             $item->item_name = $_POST['item_name'];
             $item->item_quantity = $_POST['item_quantity'];
             $item->item_description = $_POST['item_description'];

@@ -60,6 +60,7 @@
         
        <!-- Food Add -->
         <div class="container">
+            <h4><?php echo "$data";?></h4>            
         <div class="row" style="margin-top: 5%;background-color: 
             #F5F5F5;padding-top: 5%;padding-bottom: 5%;border: 2mm solid black;">
                 <form action="" method="POST" enctype="multipart/form-data">
