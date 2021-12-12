@@ -31,6 +31,14 @@ class Item extends \app\core\Model {
         return $STMT->fetch();
     }
 
+    public function getAllItems(){
+        $SQL = 'SELECT * FROM Item';
+        $STMT = self::$_connection->query($SQL);
+        $STMT->setFetchMode(\PDO::FETCH_CLASS,'app\\models\\Item');
+        return $STMT->fetchAll();
+    }
+
+
     public function getItemByType($type) {
         $SQL = 'SELECT * FROM item where type = :type';
         $STMT = self::$_connection->prepare($SQL);

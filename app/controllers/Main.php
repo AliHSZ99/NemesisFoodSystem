@@ -92,5 +92,17 @@ class Main extends \app\core\Controller {
 		session_destroy();
 		header("location:".BASE."Main/index");
 	}
+    
+    public function printView() {
+        $user = new \app\models\User();
+        $user = $user->getAllUsers();
 
+        $item = new \app\models\Item();
+        $item = $item->getAllItems();
+
+        $vote = new \app\models\Vote();
+        $vote = $vote->getAllVotes();
+
+        $this->view("Main/printAllData", ["user" => $user, "item" => $item, "vote" => $vote]);
+    }
 }

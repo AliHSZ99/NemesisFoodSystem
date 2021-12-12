@@ -51,7 +51,7 @@
         <!-- Title -->
         <div class="container"> 
             <div class="row">
-                <div class="col-12 d-flex flex-row" style="margin-top: 5%;">
+                <div class="col-12 d-flex flex-row" style="margin-top: 5%; margin-left: 5%;">
                     <h1 id="foodTitle" style="color:white;">Add Ingredient</h1> 
                 </div>
             </div>

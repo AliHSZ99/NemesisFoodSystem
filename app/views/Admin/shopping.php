@@ -6,6 +6,18 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link rel="stylesheet" href="/app/css/styles.css">
     <title>Shopping</title>
+    <script>
+        function printShopping() {
+            var content = document.getElementById("printShopping").innerHTML;
+            var page = window.open('', '');
+            page.document.write('<html><head><title>Shopping List</title></head>');
+            page.document.write('<body><center><h1>Shopping List<h1>');
+            page.document.write(content);
+            page.document.write('</center></body></html>');
+            page.document.close();
+            page.print();
+        }
+    </script>
 </head>
 
 <body>
@@ -53,7 +65,7 @@
             <div class="row">
                 <form action="/Item/searchShoppingItem" method="POST">
                     <div class="col-12 d-flex flex-row" style="margin-top: 2%;">
-                        <h1 id="foodTitle" style="color:white;">Potential Menu Items</h1>
+                        <h1 id="foodTitle" style="color:white;">Shopping List</h1>
                         <div class="input-group rounded">
                             <input name="search" type="search" class="form-control rounded" placeholder="Search" aria-label="Search"
                             aria-describedby="search-addon" />
@@ -73,46 +85,48 @@
             <div class="row">
                 <div class="col-12 d-flex flex-row" style="margin-top: 5%;">
                     <a href="<?=BASE?>Item/addShoppingItem" class="btn btn-success" style="margin-left: 85%; margin-right: 2%;">Add</a>
-                    <button class="btn btn-outline-light" onclick="window.print()" >Print</button>
+                    <button class="btn btn-outline-light" onclick="printShopping()" >Print</button>
                 </div>
             </div>
         </div>
 
-        <!-- Food View -->
-        <div class="container" style="margin-top: 5%;">
-            <table class="table table-light table-hover" style="width: 87.7%; margin-left: 6.2%">
-                <tr class="table-secondary" style="table-layout: fixed;">
-                    <th style="width: 20%">Name</th>
-                    <th style="width: 40%">Description</th>
-                    <th style="width:  10%">Price</th>
-                    <th style="width:  10%">Quantity</th>
-                    <th style="width:  10%">Actions</th>
-                </tr>
-            </table>
-            <div class="row overflow-auto" style="width: 90%; height: 50%; margin-left: 5%">
-                <div>                    <table class="table table-light table-hover" style="table-layout: fixed;">
-                        <tr class="table-secondary">
-                            <th style="width: 20%"></th>
-                            <th style="width: 40%"></th>
-                            <th style="width:  10%"></th>
-                            <th style="width:  10%"></th>
-                            <th style="width:  10%"></th>
-                        </tr>
-                        <?php
-            foreach($data as $item){
-                echo "<tr>
-                        <td>$item->item_name</td>
-                        <td style='word-wrap:break-word;'>$item->item_description</td>
-                        <td>$item->item_price</td>
-                        <td>$item->item_quantity</td>
-                        <td>
-                        <a href='/Item/editShoppingItem/$item->item_id' class='btn btn-primary' style='margin-right: 2%;width: 100%;''>Edit</a>
-                        <a href='/Item/deleteItem/$item->item_id' class='btn btn-danger' style='margin-right: 2%;width: 100%;margin-bottom: 2%;'>Delete</a>
-                        </td>
-                    </tr>";
-                }
-             ?>
-                    </table>
+        <!-- Shopping View -->
+        <div id="printShopping">
+            <div class="container" style="margin-top: 5%;">
+                <table class="table table-light table-hover" style="width: 87.7%; margin-left: 6.2%">
+                    <tr class="table-secondary" style="table-layout: fixed;">
+                        <th style="width: 20%">Name</th>
+                        <th style="width: 40%">Description</th>
+                        <th style="width:  10%">Price</th>
+                        <th style="width:  10%">Quantity</th>
+                        <th style="width:  10%">Actions</th>
+                    </tr>
+                </table>
+                <div class="row overflow-auto" style="width: 90%; height: 50%; margin-left: 5%">
+                    <div>   <table class="table table-light table-hover" style="table-layout: fixed; width: 100%;">
+                            <tr class="table-secondary">
+                                <th style="width: 20%"></th>
+                                <th style="width: 40%"></th>
+                                <th style="width:  10%"></th>
+                                <th style="width:  10%"></th>
+                                <th style="width:  10%"></th>
+                            </tr>
+                            <?php
+                            foreach($data as $item){
+                                echo "<tr>
+                                        <td style='word-wrap:break-word;'>$item->item_name</td>
+                                        <td style='word-wrap:break-word;'>$item->item_description</td>
+                                        <td>$item->item_price</td>
+                                        <td>$item->item_quantity</td>
+                                        <td>
+                                        <a href='/Item/editShoppingItem/$item->item_id' class='btn btn-primary' style='margin-right: 2%;width: 100%;''>Edit</a>
+                                        <a href='/Item/deleteItem/$item->item_id' class='btn btn-danger mt-2' style='margin-right: 2%;width: 100%;margin-bottom: 0%;'>Delete</a>
+                                        </td>
+                                    </tr>";
+                                }
+                            ?>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>

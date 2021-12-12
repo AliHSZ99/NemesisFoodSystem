@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 07, 2021 at 05:27 PM
--- Server version: 10.4.20-MariaDB
--- PHP Version: 8.0.9
+-- Generation Time: Dec 12, 2021 at 06:54 PM
+-- Server version: 10.4.22-MariaDB
+-- PHP Version: 8.0.13
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -35,22 +35,23 @@ CREATE TABLE `item` (
   `type` varchar(20) NOT NULL,
   `item_name` varchar(30) NOT NULL,
   `item_description` text NOT NULL,
-  `item_price` decimal(6,2) NOT NULL,
-  `item_quantity` int(11) NOT NULL,
-  `goal` int(11) NOT NULL,
-  `vote_count` int(11) NOT NULL,
-  `timestamp` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-  `filename` varchar(100) NOT NULL
+  `item_price` decimal(6,2) DEFAULT NULL,
+  `item_quantity` int(11) DEFAULT NULL,
+  `goal` int(11) DEFAULT NULL,
+  `vote_count` int(11) DEFAULT NULL,
+  `timestamp` timestamp NOT NULL DEFAULT current_timestamp(),
+  `filename` varchar(100) DEFAULT NULL,
+  `previousType` varchar(20) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `item`
 --
 
-INSERT INTO `item` (`item_id`, `type`, `item_name`, `item_description`, `item_price`, `item_quantity`, `goal`, `vote_count`, `timestamp`, `filename`) VALUES
-(1, 'prospective', 'cake', 'cake', '12.20', 0, 20, 0, '2021-12-07 15:33:59', '/uploads/61af7ee7c74f1.jpg'),
-(2, 'prospective', 'new cake', 'cake sjkadfhsjkldafh;klsdafsjkldafskldafhsjkldafhsjkdahfjk;sdalhfjklsdafhklsdahfjklsdafhsjkdafhjklsdafhsjkdalfhsjkldafhsjkdahfsjdkafhjksdafhklsdajfskldajfskldafjskldafklsdahfsjkldafhjklhkl;hkl', '2.00', 0, 5, 0, '2021-12-07 15:34:27', '/uploads/61af7f03255f9.jpg'),
-(3, 'prospective', 'owl', 'owls;slajf;skldafjskldfj', '4.00', 0, 7, 0, '2021-12-07 15:38:44', '/uploads/61af8004bce60.png');
+INSERT INTO `item` (`item_id`, `type`, `item_name`, `item_description`, `item_price`, `item_quantity`, `goal`, `vote_count`, `timestamp`, `filename`, `previousType`) VALUES
+(66, 'discard', 'rhriohroi', 'rheherhyyeryeryeryyrreyeryreyeryrey', '23.00', 45, NULL, NULL, '2021-12-12 17:21:56', '/uploads/61b62fb3d4f49.jpg', 'food'),
+(68, 'discard', 'New', 'yeryeryrrreyeryeryyreyery', '12.00', 6, NULL, NULL, '2021-12-12 17:23:04', NULL, 'cleaning'),
+(70, 'discard', 'herher', 'herher', '12.00', 12, NULL, NULL, '2021-12-12 17:38:01', NULL, 'cleaning');
 
 -- --------------------------------------------------------
 
@@ -123,7 +124,7 @@ ALTER TABLE `vote`
 -- AUTO_INCREMENT for table `item`
 --
 ALTER TABLE `item`
-  MODIFY `item_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `item_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=71;
 
 --
 -- AUTO_INCREMENT for table `user`
@@ -135,7 +136,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `vote`
 --
 ALTER TABLE `vote`
-  MODIFY `vote_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `vote_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- Constraints for dumped tables

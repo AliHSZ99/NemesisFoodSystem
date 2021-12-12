@@ -6,6 +6,18 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link rel="stylesheet" href="/app/css/styles.css">
     <title>Ingredients</title>
+    <script>
+        function printIngredients() {
+            var content = document.getElementById("printIngredients").innerHTML;
+            var page = window.open('', '');
+            page.document.write('<html><head><title>Ingredient</title></head>');
+            page.document.write('<body><center><h1>Ingredient<h1>');
+            page.document.write(content);
+            page.document.write('</center></body></html>');
+            page.document.close();
+            page.print();
+        }
+    </script>
 </head>
 
 <body>
@@ -72,59 +84,65 @@
             <div class="row">
                 <div class="col-12 d-flex flex-row" style="margin-top: 5%;">
                     <a href="<?=BASE?>Item/addIngredientItem" class="btn btn-success" style="margin-left: 85%; margin-right: 2%; vertical-align: middle;">Add</a>
-                    <button class="btn btn-outline-light" onclick="window.print()" >Print</button>
+                    <button class="btn btn-outline-light" onclick="printIngredients()" >Print</button>
                 </div>
             </div>
         </div>
 
-        <!-- Food View -->
-        <div class="container" style="margin-top: 5%;">
-            <table class="table table-light table-hover" style="width: 87.7%; margin-left: 6.2%">
-                <tr class="table-secondary" style="table-layout: fixed;">
-                    <th style="width: 13%">Name</th>
-                    <th style="width: 22%">Description</th>
-                    <th style="width:  6%">Price</th>
-                    <th style="width:  6%">Quantity</th>
-                    <th style="width:  20%">Date added</th>
-                    <th style="width:  35%">Actions</th>
-                </tr>
-            </table>
-            <table class="table table-light table-hover" style="width: 87.7%; margin-left: 6.2%">
-                <tr class="table-secondary" style="table-layout: fixed;">
-                    <!--UNCOMMENT FOR PAGE WITH IMAGE <th>Images</th>!-->
-                    <th style="width: 13%"></th>
-                    <th style="width: 22%"></th>
-                    <th style="width: 6%"></th>
-                    <th style="width: 6%"></th>
-                    <th style="width: 20%"></th>
-                    <th style="width: 35%"></th>
-                </tr>
-                <?php 
-                    foreach ($data as $item) { 
-                            echo " <tr> ";
-                            /*echo "
-                                        <td>
-                                        <img src='$item->filename' style='width:150px; height: 120px;'>
-                                        </td>"; UNCOMMENT FOR PAGE WITH IMAGE*/
-                            echo "
-                                        <td>$item->item_name</td>
-                                        <td style='word-wrap:break-word'>$item->item_description</td>
-                                        <td>$item->item_price</td>
-                                        <td>$item->item_quantity</td>
-                                        <td>$item->timestamp</td>
-                                        <td>
-                                             <a href='/Item/editItemIngredient/$item->item_id' class='btn btn-primary mt-2'>Edit</a>
-                                             <a href='/Item/deleteItem/$item->item_id' class='btn btn-danger mt-2'>Delete</a> ";
-                            echo "
-                                             <a href='/Item/decrement/$item->item_id' class='btn btn-danger mt-2'>Discard one</a>
-                                             <a href='/Item/discardAll/$item->item_id' class='btn btn-danger mt-2'>Discard all</a>";
+        <!-- Ingredients View -->
+        <div id="printIngredients">
+            <div class="container" style="margin-top: 5%;">
+                <table class="table table-light table-hover" style="width: 87.7%; margin-left: 6.2%">
+                    <tr class="table-secondary" style="table-layout: fixed; width:100%;">
+                        <th style="width: 13%">Name</th>
+                        <th style="width: 22%">Description</th>
+                        <th style="width:  6%">Price</th>
+                        <th style="width:  6%">Quantity</th>
+                        <th style="width:  20%">Date added</th>
+                        <th style="width:  35%">Actions</th>
+                    </tr>
+                </table>
+                <div class="row overflow-auto" style="width: 90%; height: 50%; margin-left: 5%">
+                    <div class="">
+                        <table class="table table-light table-hover" style="table-layout: fixed; width:100%;">
+                            <tr class="table-secondary">
+                                <!--UNCOMMENT FOR PAGE WITH IMAGE <th>Images</th>!-->
+                                <th style="width: 13%"></th>
+                                <th style="width: 22%"></th>
+                                <th style="width: 6%"></th>
+                                <th style="width: 6%"></th>
+                                <th style="width: 20%"></th>
+                                <th style="width: 35%"></th>
+                            </tr>
+                            <?php 
+                                foreach ($data as $item) { 
+                                        echo " <tr> ";
+                                        /*echo "
+                                                    <td>
+                                                    <img src='$item->filename' style='width:150px; height: 120px;'>
+                                                    </td>"; UNCOMMENT FOR PAGE WITH IMAGE*/
+                                        echo "
+                                                    <td style='word-wrap:break-word'>$item->item_name</td>
+                                                    <td style='word-wrap:break-word'>$item->item_description</td>
+                                                    <td>$item->item_price</td>
+                                                    <td>$item->item_quantity</td>
+                                                    <td>$item->timestamp</td>
+                                                    <td>
+                                                        <a href='/Item/editItemIngredient/$item->item_id' class='btn btn-primary mt-2'>Edit</a>
+                                                        <a href='/Item/deleteItem/$item->item_id' class='btn btn-danger mt-2'>Delete</a> ";
+                                        echo "
+                                                        <a href='/Item/decrement/$item->item_id' class='btn btn-danger mt-2'>Discard one</a>
+                                                        <a href='/Item/discardAll/$item->item_id' class='btn btn-danger mt-2'>Discard all</a>";
 
-                            echo "      </td>
-                                   </tr>";
-                            }
-                        ?>
-            </table>
-        </div>                
+                                        echo "      </td>
+                                            </tr>";
+                                        }
+                                    ?>
+                        </table>
+                    </div>
+                </div>
+            </div>                
+        </div>
     </div>
 
     <!-- black footer -->

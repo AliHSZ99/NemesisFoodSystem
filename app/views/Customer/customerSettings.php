@@ -27,7 +27,7 @@
             height: max-content;
             border-radius: 25px;
             margin-left: 20%;
-            margin-top: 30%;
+            margin-top: 15%;
             padding: 10px;
         }
 
@@ -131,16 +131,23 @@
             </center>
         </div>
 
+        <!-- Title -->
+        <div class="container"> 
+            <div class="row">
+                <div class="col-12 d-flex flex-row" style="margin-top: 5%; margin-left: 8%;">
+                    <h1 id="foodTitle" style="color:white; font-size: 65px">Settings</h1> 
+                </div>
+            </div>
+        </div>
+
         <center>
             <!-- This for the actual body of the page -->
             <div class="container-xl container-fluid">
                 <div class="row">
                     
-                    <!-- The user's post, anime list, manga list, and setting section -->
                     <div class="col-9 mt-4 pt-3">
 
-                        <!-- post, animelist, mangalist, and settings box -->
-                        <!-- The box where all the post, anime list, mangalist and settings will be placed -->
+                        <!-- settings box -->
                         <div id="listBox">
                             <div style="height: 468px;">
                                 <div class="container">

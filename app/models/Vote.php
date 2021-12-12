@@ -28,6 +28,15 @@ class Vote extends \app\core\Model {
         return false;
     }
 
+    // method to get all votes
+    public function getAllVotes(){
+        $SQL = 'SELECT * FROM vote';
+        $STMT = self::$_connection->query($SQL);
+        $STMT->setFetchMode(\PDO::FETCH_CLASS,'app\\models\\Vote');
+        return $STMT->fetchAll();
+    }
+
+
     // adding a vote
     public function addVote() {
         $SQL = "INSERT INTO vote (user_id, item_id) VALUES (:user_id, :item_id)";

@@ -5,6 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link rel="stylesheet" href="/app/css/styles.css">
+    <script>
+        function printProspective() {
+            var content = document.getElementById("printProspective").innerHTML;
+            var page = window.open('', '');
+            page.document.write('<html><head><title>Prospective Menu</title></head>');
+            page.document.write('<body><center><h1>Prospective Menu<h1>');
+            page.document.write(content);
+            page.document.write('</center></body></html>');
+            page.document.close();
+            page.print();
+        }
+    </script>
     <title>Prospective Menu</title>
 </head>
 
@@ -73,56 +85,58 @@
             <div class="row">
                 <div class="col-12 d-flex flex-row" style="margin-top: 5%;">
                     <a href="<?=BASE?>Item/addProspectiveItem" class="btn btn-success" style="margin-left: 85%; margin-right: 2%;">Add</a>
-                    <button class="btn btn-outline-light" onclick="window.print()">Print</button>
+                    <button class="btn btn-outline-light" onclick="printProspective()">Print</button>
                 </div>
             </div>
         </div>
 
         <!-- Prospective View -->
-        <div class="container" style="margin-top: 5%;">
-            <table class="table table-light table-hover" style="width: 87.9%; margin-left: 6%">
-                <tr class="table-secondary" style="table-layout: fixed;">
-                    <th style="width: 20%">Images</th>
-                    <th style="width: 13%">Name</th>
-                    <th style="width: 30%">Description</th>
-                    <th style="width:  8%">Price</th>
-                    <th style="width:  8%">Goals</th>
-                    <th style="width:  8%">Votes</th>
-                    <th style="width:  12%">Actions</th>
-                </tr>
-            </table>
+        <div id="printProspective">
+            <div class="container" style="margin-top: 5%;">
+                <table class="table table-light table-hover" style="width: 87.9%; margin-left: 6%">
+                    <tr class="table-secondary" style="table-layout: fixed;">
+                        <th style="width: 20%">Images</th>
+                        <th style="width: 13%">Name</th>
+                        <th style="width: 30%">Description</th>
+                        <th style="width:  8%">Price</th>
+                        <th style="width:  8%">Goals</th>
+                        <th style="width:  8%">Votes</th>
+                        <th style="width:  12%">Actions</th>
+                    </tr>
+                </table>
 
-            <div class="row overflow-auto" style="width: 90%; height: 50%; margin-left: 5%">
-                <div class="">
-                    <table class="table table-light table-hover " style="table-layout: fixed;">
-                        <tr class="table-secondary">
-                            <th style="width: 20%"></th>
-                            <th style="width: 13%"></th>
-                            <th style="width: 30%"></th>
-                            <th style="width:  8%"></th>
-                            <th style="width:  8%"></th>
-                            <th style="width:  8%"></th>
-                            <th style="width:  12%"></th>
-                        </tr>
-                        <?php 
-                            foreach($data as $results) {
-                            echo " <tr> 
-                                        <td >
-                                            <img src='$results->filename' style='width:150px; height: 120px;'>
-                                        </td>
-                                        <td >$results->item_name</td>
-                                        <td style='word-wrap:break-word'>$results->item_description </td>
-                                        <td >$results->item_price</td>
-                                        <td >$results->goal</td>
-                                        <td >$results->vote_count</td>
-                                        <td >
-                                            <a href='/Item/editProspectiveItem/$results->item_id' class='btn btn-primary' style='width:100%;''>Edit</a>
-                                             <a href='/Item/deleteProspectiveItem/$results->item_id' class='btn btn-danger mt-2' style='width:100%;'>Delete</a>
-                                        </td>
-                                    </tr>";
-                            }
-                        ?>
-                    </table>
+                <div class="row overflow-auto" style="width: 90%; height: 50%; margin-left: 5%">
+                    <div class="">
+                        <table class="table table-light table-hover " style="table-layout: fixed; width:100%;">
+                            <tr class="table-secondary">
+                                <th style="width: 20%"></th>
+                                <th style="width: 13%"></th>
+                                <th style="width: 30%"></th>
+                                <th style="width:  8%"></th>
+                                <th style="width:  8%"></th>
+                                <th style="width:  8%"></th>
+                                <th style="width:  12%"></th>
+                            </tr>
+                            <?php 
+                                foreach($data as $results) {
+                                echo " <tr> 
+                                            <td >
+                                                <img src='$results->filename' style='width:120px; height: 120px;'>
+                                            </td>
+                                            <td style='word-wrap:break-word'>$results->item_name</td>
+                                            <td style='word-wrap:break-word'>$results->item_description </td>
+                                            <td >$results->item_price</td>
+                                            <td >$results->goal</td>
+                                            <td >$results->vote_count</td>
+                                            <td >
+                                                <a href='/Item/editProspectiveItem/$results->item_id' class='btn btn-primary' style='width:100%;'>Edit</a>
+                                                <a href='/Item/deleteProspectiveItem/$results->item_id' class='btn btn-danger mt-2' style='width:100%;'>Delete</a>
+                                            </td>
+                                        </tr>";
+                                }
+                            ?>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>

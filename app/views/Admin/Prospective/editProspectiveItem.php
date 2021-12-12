@@ -51,8 +51,8 @@
         <!-- Title -->
         <div class="container"> 
             <div class="row">
-                <div class="col-12 d-flex flex-row" style="margin-top: 5%;">
-                    <h1 id="foodTitle" style="color:white;">Edit Prospective Menu</h1> 
+                <div class="col-12 d-flex flex-row" style="margin-top: 5%; margin-left: 5%;">
+                    <h1 id="foodTitle" style="color:white;">Edit Prospective Menu Item</h1> 
                 </div>
             </div>
         </div>

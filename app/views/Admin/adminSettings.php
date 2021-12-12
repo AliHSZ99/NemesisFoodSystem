@@ -2,22 +2,45 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="text/javascript">
+        function closePrint () {
+            document.body.removeChild(this.__container__);
+        }
+
+        function setPrint () {
+            this.contentWindow.__container__ = this;
+            this.contentWindow.onbeforeunload = closePrint;
+            this.contentWindow.onafterprint = closePrint;
+            this.contentWindow.focus();
+            this.contentWindow.print();
+        }
+
+        function printPage (sURL) {
+            var page = document.createElement("iframe");
+            page.onload = setPrint;
+            page.style.position = "fixed";
+            page.style.right = "0";
+            page.style.bottom = "0";
+            page.style.width = "0";
+            page.style.height = "0";
+            page.style.border = "0";
+            page.src = sURL;
+            document.body.appendChild(page);
+        }
+    </script>
     
     <style> 
-        
-
         .navbar-brand {
             margin-left: 20px;
         }
 
-        
         /* the box where all the anime list and manga list are located */
         #listBox{
             background-color: #F5F5F5;
             width: 1000px;
             height: 100%;
             border-radius: 25px;
-            margin-top: 30%;
+            margin-top: 2%;
             margin-left: 15%;
             padding: 10px;
         }
@@ -109,13 +132,30 @@
             </center>
         </div>
 
+        <!-- Title -->
+        <div class="container"> 
+            <div class="row">
+                <div class="col-12 d-flex flex-row" style="margin-top: 5%; margin-left: 7%;">
+                    <h1 id="foodTitle" style="color:white; font-size: 65px">Settings</h1> 
+                </div>
+            </div>
+        </div>
+        
+         <!-- Add Button and Print Button -->
+         <div class="container">
+            <div class="row">
+                <div class="col-12 d-flex flex-row" style="margin-top: 5%;">
+                    <button class="btn btn-outline-light" style="width: 76%; margin-left: 15%; margin-top: 10%;" onclick="printPage('/Main/printView');">Print all data from the inventory</button>
+                </div>
+            </div>
+        </div>
+
         <center>
             <!-- This for the actual body of the page -->
             <div class="container-xl container-fluid">
                 <div class="row">
                     
-                    <!-- post, animelist, mangalist, and settings box -->
-                    <!-- The box where all the post, anime list, mangalist and settings will be placed -->
+                    <!-- settings box -->
                     <div id="listBox">
                             <div style="height: 468px;">
                                 <div class="container">
