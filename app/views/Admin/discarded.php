@@ -72,11 +72,10 @@
         <div class="container">
             <div class="row">
                 <div class="col-12 d-flex flex-row" style="margin-top: 5%;">
-                    <button class="btn btn-outline-light btn-lg" onclick="window.print()" style="margin-left: 93%">Print</button>
+                    <a href="<?=BASE?>Item/resetDiscard" class="btn btn-success" style="margin-left: 85%; margin-right: 2%; vertical-align: middle;">Reset</a>
                 </div>
             </div>
         </div>
-
         <!-- Discarded View -->
         <div class="container" style="margin-top: 5%;">
             <table class="table table-light table-hover" style="width: 87.9%; margin-left: 6%">
