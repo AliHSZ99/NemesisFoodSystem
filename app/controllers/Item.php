@@ -436,5 +436,10 @@ class Item extends \app\core\Controller {
         $item2->editFoodItem();
         header('Location: ' . $_SERVER['HTTP_REFERER']);
     }
-
+	
+    public function resetDiscard() {
+        $item = new \app\models\Item();
+        $item->resetDiscard();
+        header('Location: ' . $_SERVER['HTTP_REFERER']);
+    }
 }
