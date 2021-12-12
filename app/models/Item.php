@@ -14,6 +14,7 @@ class Item extends \app\core\Model {
     public $vote_count;
     public $timestamp;
     public $filename;
+    public $previousType;
 
     public function __construct(){
         parent::__construct();
@@ -57,13 +58,6 @@ class Item extends \app\core\Model {
     }
     //
 
-
-
-
-
-
-
-
     public function insertShoppingItem() {
         $SQL = 'INSERT INTO item (item_name, type, item_description, item_price, item_quantity) VALUES (:item_name, :type, :item_description, :item_price, :item_quantity)';
         $STMT = self::$_connection->prepare($SQL);
@@ -87,7 +81,7 @@ class Item extends \app\core\Model {
     }
 
     public function getShoppingItems() {
-        $SQL = "SELECT * FROM item where `type` = 'shopping'";
+        $SQL = "SELECT * FROM item where `type` = 'shopping'  and `item_quantity` > 0";
         $STMT = self::$_connection->query($SQL);
         $STMT->setFetchMode(\PDO::FETCH_CLASS,'app\\models\\Item');
         return $STMT->fetchAll();
@@ -192,9 +186,9 @@ class Item extends \app\core\Model {
     }
 
     public function insertDiscardItem() {
-        $SQL = 'INSERT INTO item (item_name, type, item_description, item_price, item_quantity, filename) VALUES (:item_name, :type, :item_description, :item_price, :item_quantity, :filename)';
+        $SQL = 'INSERT INTO item (item_name, type, item_description, item_price, item_quantity, filename, previousType) VALUES (:item_name, :type, :item_description, :item_price, :item_quantity, :filename, :previousType)';
         $STMT = self::$_connection->prepare($SQL);
-        $STMT->execute(['item_name'=>$this->item_name, 'type'=>'discard', 'item_description'=>$this->item_description,'item_price'=>$this->item_price,'item_quantity'=>0, 'filename'=>$this->filename]);
+        $STMT->execute(['item_name'=>$this->item_name, 'type'=>'discard', 'item_description'=>$this->item_description,'item_price'=>$this->item_price,'item_quantity'=>0, 'filename'=>$this->filename,'previousType'=>$this->previousType]);
     }
 
     //Deletes item from menu and discard when item from menu is deleted
@@ -223,11 +217,21 @@ class Item extends \app\core\Model {
         $STMT->setFetchMode(\PDO::FETCH_CLASS, "app\\models\\Item");
         return $STMT->fetchAll();
     }
-	
+
     public function resetDiscard() {
         $SQL = "UPDATE `item` SET item_quantity = 0 WHERE item.type = 'discard'";
         $STMT = self::$_connection->prepare($SQL);
         $STMT->execute();
+    }
+
+    public function retrieveFromDiscard() {
+        $SQL = 'INSERT INTO item (item_id, type, item_name, item_description, item_price, 
+        item_quantity,`timestamp`,filename)
+        VALUES (:item_id - 1,:type,:item_name,:item_description,:item_price,1,:timestamp,:filename)
+        On Duplicate Key UPDATE item_quantity = item_quantity + 1;';
+        $STMT = self::$_connection->prepare($SQL);
+        $STMT->execute(['item_id'=>$this->item_id,'type'=>$this->previousType,
+        'item_name'=>$this->item_name,'item_description'=>$this->item_description,'item_price'=>$this->item_price,'timestamp'=>$this->timestamp,'filename'=>$this->filename]);
     }
 
 }
