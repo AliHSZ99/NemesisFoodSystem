@@ -223,5 +223,11 @@ class Item extends \app\core\Model {
         $STMT->setFetchMode(\PDO::FETCH_CLASS, "app\\models\\Item");
         return $STMT->fetchAll();
     }
+	
+    public function resetDiscard() {
+        $SQL = "UPDATE `item` SET item_quantity = 0 WHERE item.type = 'discard'";
+        $STMT = self::$_connection->prepare($SQL);
+        $STMT->execute();
+    }
 
 }
