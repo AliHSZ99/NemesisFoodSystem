@@ -56,6 +56,7 @@ class Item extends \app\core\Controller {
                     $item->item_quantity = $_POST['item_quantity'];
                     $item->filename = "/".$this->folder.$filename;
                     $item->insertFoodItem();
+                    $item->previousType = 'food';
                     $item->insertDiscardItem();
 
                     header('location:/User/Food/food');
@@ -132,10 +133,14 @@ class Item extends \app\core\Controller {
     }
 	
 	public function deleteFoodItem($item_id) {
-        $Item = new \app\models\Item();
-        $Item->delete($item_id);
-        $Item->delete($item_id + 1);
-        header('location:/User/food');
+        $item = new \app\models\Item();
+        $item = $item->get($item_id);
+        $item2 = $item->get($item_id + 1);
+        $item2->item_quantity = $item2->item_quantity + $item->item_quantity;
+        $item->item_quantity = 0;
+        $item2->editFoodItem();
+        $item->delete($item_id);
+        header('Location: ' . $_SERVER['HTTP_REFERER']);
     }
 	
 	
@@ -281,6 +286,8 @@ class Item extends \app\core\Controller {
             $item->item_price = $_POST['item_price'];
             $item->item_quantity = $_POST['item_quantity'];
             $item->insertItem();
+            $item->previousType = 'ingredients';
+            $item->type = 'discard';
             $item->insertDiscardItem();
             header('location:/User/'.$type);        
         } else $this->view('Admin/addIngredientItem');
@@ -296,6 +303,7 @@ class Item extends \app\core\Controller {
             $item->item_price = $_POST['item_price'];
             $item->item_quantity = $_POST['item_quantity'];
             $item->insertItem();
+            $item->previousType = 'cleaning';
             $item->insertDiscardItem();
             header('location:/User/'.$type);        
         } else $this->view('Admin/addCleaningItem');
@@ -310,6 +318,11 @@ class Item extends \app\core\Controller {
         if(isset($_POST['action'])){
             $item->item_name = $_POST['item_name'];
             $item->item_quantity = $_POST['item_quantity'];
+            $item->item_description = $_POST['item_description'];
+            $item->item_price = $_POST['item_price'];
+            $item->updateItem();
+            $item = $item->get($item_id + 1);
+            $item->item_name = $_POST['item_name'];
             $item->item_description = $_POST['item_description'];
             $item->item_price = $_POST['item_price'];
             $item->updateItem();
@@ -330,6 +343,11 @@ class Item extends \app\core\Controller {
             $item->item_description = $_POST['item_description'];
             $item->item_price = $_POST['item_price'];
             $item->updateItem();
+            $item = $item->get($item_id + 1);
+            $item->item_name = $_POST['item_name'];
+            $item->item_description = $_POST['item_description'];
+            $item->item_price = $_POST['item_price'];
+            $item->updateItem();
             header('location:/User/'.$type);        
         } else {
             $this->view("Admin/editItemIngredient",$item);
@@ -339,10 +357,12 @@ class Item extends \app\core\Controller {
     public function deleteItem($item_id) {
         $item = new \app\models\Item();
         $item = $item->get($item_id);
-        $type = strtolower($item->type);
+        $item2 = $item->get($item_id + 1);
+        $item2->item_quantity = $item2->item_quantity + $item->item_quantity;
+        $item->item_quantity = 0;
+        $item2->editFoodItem();
         $item->delete($item_id);
-        $item->delete($item_id + 1);
-        header('location:/User/'.$type);        
+        header('Location: ' . $_SERVER['HTTP_REFERER']);     
 
     }
 
@@ -394,8 +414,12 @@ class Item extends \app\core\Controller {
 
     public function deleteFromMenu($item_id) {
         $item = new \app\models\Item();
-        $item->deleteFromMenu($item_id);
-        $item->delete($item_id + 1);
+        $item = $item->get($item_id);
+        $item2 = $item->get($item_id + 1);
+        $item2->item_quantity = $item2->item_quantity + $item->item_quantity;
+        $item->item_quantity = 0;
+        $item2->editFoodItem();
+        $item->delete($item_id);
         header('Location: ' . $_SERVER['HTTP_REFERER']);
     }
 
@@ -415,13 +439,11 @@ class Item extends \app\core\Controller {
     public function increment($item_id) {
         $item = new \app\models\Item();
         $item = $item->get($item_id);
-        $item2 = $item->get($item_id - 1);
 
         if ($item->item_quantity > 0) {
             $item->item_quantity = $item->item_quantity - 1;
-            $item2->item_quantity = $item2->item_quantity + 1;
             $item->editFoodItem();
-            $item2->editFoodItem();
+            $item->retrieveFromDiscard($item_id);
         }
         header('Location: ' . $_SERVER['HTTP_REFERER']);
     }
@@ -436,7 +458,7 @@ class Item extends \app\core\Controller {
         $item2->editFoodItem();
         header('Location: ' . $_SERVER['HTTP_REFERER']);
     }
-	
+
     public function resetDiscard() {
         $item = new \app\models\Item();
         $item->resetDiscard();
