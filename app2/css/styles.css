@@ -1,0 +1,277 @@
+/* CSS FOR LOGIN SCREEN */
+
+.loginregister {
+    background-color: #00003a;
+    height: 185px;
+}
+
+#loginform {
+    background-color: #F5F5F5;
+    width: 500px;
+    height: 500px;
+    box-shadow: darkgray 1px 4px 10px 0px;
+    border-radius: 2px;
+}
+
+.footer {
+    color: white;
+    position:fixed;
+    bottom:0;
+    min-width: 100%;
+    height: 40px;
+    background-size: 100% 100%;
+    background-color: black;
+}
+
+.loginbox {
+    width: 400px;
+    height: 60px;
+    padding-left: 8px;
+    padding-right: 10px;
+    font-size: 30px;
+}
+
+#loginh1 {
+    font-size: 50px;
+    color: black;
+}
+
+#loginbutton {
+    width: 400px;
+    height: 60px;
+    border-radius: 2px;
+    background-color: #2fadfc;
+    font-size: 22px;
+    border-color: #2fadfc;
+}
+
+.loginlinks {
+    text-decoration: none;
+    color: #2fadfc;
+    font-size: 20px;
+}
+
+/* FOR REGISTER PAGE */
+#registerform {
+    background-color: #F5F5F5;
+    width: 500px;
+    height: 600px;
+    box-shadow: darkgray 1px 4px 10px 0px;
+    border-radius: 2px;
+}
+
+#password-must-contain {
+    font-weight: bold;
+    margin-right: 220px;
+}
+
+#cond1 {
+    margin-left: 40px;
+    margin-right: 270px;
+}
+
+#cond2 {
+    margin-left: 40px;
+    margin-right: 240px;
+}
+
+#cond3 {
+    margin-left: 40px;
+    margin-right: 300px;
+}
+
+#passwordlist {
+    margin-top: -18px;
+}
+
+#password-requirements {
+    margin-top: -5px;
+    color: black;
+}
+
+#register-content {
+    margin-top: 20px;
+}
+
+.error-messages {
+    color: red;
+}
+
+/* CSS FOR SIDE NAVIGATION BAR */
+.sidenav {
+    height: 100%;
+    width: 25%;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #00003a;
+    overflow-x: hidden;
+    padding-top: 20px;
+}
+
+.sidenav a {
+    /* padding: 6px 6px 6px 32px; */
+    text-decoration: none;
+    font-size: 20px;
+    /* color: #818181; */
+    color: white;
+    display: block;
+}
+
+.sidenav a:hover {
+    /* color: #f1f1f1; */
+    /* color: violet; */
+    color: #2fadfc;
+}
+
+.sidenav .logouthover:hover {
+    color: red;
+}
+
+@media screen and (max-height: 450px) {
+    .sidenav {padding-top: 15px;}
+    .sidenav a {font-size: 18px;}
+}
+
+/* CSS FOR THE VOTING SCREEN */
+.allotherfooters {
+    margin-left: 60%;
+}
+
+.logo {
+    width: 410px;
+}
+
+.setting-logout-hr {
+    color: white;
+    width: 130px;
+}
+
+.setting-logout-position {
+    margin-top: 40%;
+}
+
+.nav-title {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* CSS FOR ADMIN NAVIGATION BAR */
+.admin-hr {
+    color: white;
+    width: 340px;
+}
+
+.admin-navbar-items {
+    margin-top: 20%;
+}
+
+.setting-logout-position-admin {
+    margin-top: 15%;
+}
+
+/* CSS FOR BLUE BOXXXX */
+.blue-box {
+    margin-left: 20%;
+    width: 80%;
+    height: 100%;
+    background-color: #2fadfc;
+}
+/*Header used for pages*/
+.PageHeader {
+    color: white;
+}
+
+.printButton {
+
+}
+
+.searchBar {
+    margin-left: 50%;
+}
+
+.white-box {
+    width: 100%;
+    height: 10%; 
+    margin-top: 50px; 
+    margin-left: auto; 
+    margin-right: auto;   
+    background: rgba(255,255,255,1);
+    padding: 30px;
+}
+
+.discardTable {
+    padding-right: 10mm;
+}
+
+.itemBox {
+    width: 10%;
+}
+
+/* CSS FOR FOOD INVENTORY */
+
+#foodTitle {
+    width: 90%;
+    text-align: center;
+}
+
+.addFoodBtn {
+    margin-right: 2%;
+    border-radius: 12px;
+    background: #e7e7e7;
+    border-color: #F5FFFA;
+}
+
+.editFoodBtn {
+    margin-right: 2%;
+    border-radius: 12px;
+    background: #e7e7e7;
+    border-color: #F5FFFA;
+}
+
+.deleteFoodBtn {
+    margin-left: 82%;
+    margin-right: 2%;
+    border-radius: 12px;
+    background: #e7e7e7;
+    border-color: #F5FFFA;
+}
+
+.addFoodBtn:hover {
+    background: #FFFFFF;
+}
+
+.foodTable {
+    text-align: center;
+    font-size: 150%;
+}
+
+.searchBar {
+    margin-left: 40%;
+}
+
+.discardTable {
+    padding-right: 10mm;
+}
+
+.scroll {
+    margin-left: 10%;
+    background-color: white;
+    width: 40%;
+    height: 70%;
+    overflow-x: hidden;
+    overflow-y: auto;
+    text-align:justify;
+}
+
+#outer
+{
+    width:100%;
+    text-align: center;
+}
+
+.inner
+{
+    display: inline-block;
+}
