@@ -99,7 +99,7 @@
                         <th style="width: 13%">Name</th>
                         <th style="width: 30%">Description</th>
                         <th style="width:  8%">Price</th>
-                        <th style="width:  8%">Goals</th>
+                        <th style="width:  8%">Goal</th>
                         <th style="width:  8%">Votes</th>
                         <th style="width:  12%">Actions</th>
                     </tr>

@@ -117,9 +117,9 @@ class Item extends \app\core\Model {
 	
     // Prospective Item
     public function insertProspectiveItem() {
-        $SQL = 'INSERT INTO item (item_name, type, item_description, goal, item_price, filename) VALUES (:item_name, :type, :item_description, :goal, :item_price, :filename)';
+        $SQL = 'INSERT INTO item (item_name, type, item_description, goal, vote_count, item_price, filename) VALUES (:item_name, :type, :item_description, :goal, :vote_count, :item_price, :filename)';
         $STMT = self::$_connection->prepare($SQL);
-        $STMT->execute(['item_name'=>$this->item_name, 'type'=>$this->type, 'item_description'=>$this->item_description, 'goal'=>$this->goal, 'item_price'=>$this->item_price, 'filename'=>$this->filename]);
+        $STMT->execute(['item_name'=>$this->item_name, 'type'=>$this->type, 'item_description'=>$this->item_description, 'goal'=>$this->goal, 'vote_count'=>$this->vote_count, 'item_price'=>$this->item_price, 'filename'=>$this->filename]);
     }
 
     public function getProspectiveItems() {

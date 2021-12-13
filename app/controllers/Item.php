@@ -36,7 +36,7 @@ class Item extends \app\core\Controller {
                 if($check !== false && isset($mime_type_to_extension[$check['mime']])){
                     $extension = $mime_type_to_extension[$check['mime']];
                 }else{
-                    $this->view('Admin/Food/food', ['error'=>"Bad file type",'pictures'=>[]]);
+                    $this->view('Admin/Food/addFoodItem', ['error'=>"Bad file type",'pictures'=>[]]);
                     return;
                 }
                 
@@ -44,7 +44,7 @@ class Item extends \app\core\Controller {
                 $filepath = $this->folder.$filename;
 
                 if($_FILES['newPicture']['size'] > 4000000){
-                     $this->view('Admin/Food/food', ['error'=>"File too large",'pictures'=>[]]);
+                     $this->view('Admin/Food/addFoodItem', ['error'=>"File too large",'pictures'=>[]]);
                      return;
                 }
                 if(move_uploaded_file($_FILES['newPicture']['tmp_name'], $filepath)){
@@ -87,7 +87,7 @@ class Item extends \app\core\Controller {
                 if($check !== false && isset($mime_type_to_extension[$check['mime']])){
                     $extension = $mime_type_to_extension[$check['mime']];
                 }else{
-                    $this->view('Admin/Food/food', ['error'=>"Bad file type",'pictures'=>[]]);
+                    $this->view('Admin/Food/editFoodItem', ['error'=>"Bad file type",'item'=>$item]);
                     return;
                 }
                 
@@ -95,7 +95,7 @@ class Item extends \app\core\Controller {
                 $filepath = $this->folder.$filename;
 
                 if($_FILES['newPicture']['size'] > 4000000){
-                     $this->view('Admin/Food/food', ['error'=>"File too large",'pictures'=>[]]);
+                     $this->view('Admin/Food/editFoodItem', ['error'=>"File too large",'item'=>$item]);
                      return;
                 }
                 if(move_uploaded_file($_FILES['newPicture']['tmp_name'], $filepath)){
@@ -129,7 +129,7 @@ class Item extends \app\core\Controller {
             }
 
         }else //1 present a form to the user
-            $this->view('Admin/Food/editFoodItem', ['item'=>$item]);
+            $this->view('Admin/Food/editFoodItem', ["error" => "", 'item'=>$item]);
     }
 	
 	public function deleteFoodItem($item_id) {
@@ -159,7 +159,7 @@ class Item extends \app\core\Controller {
                 if($check !== false && isset($mime_type_to_extension[$check['mime']])){
                     $extension = $mime_type_to_extension[$check['mime']];
                 }else{
-                    $this->view('Admin/index', ['error'=>"Bad file type",'pictures'=>[]]);
+                    $this->view('Admin/Prospective/addProspectiveItem', ['error'=>"Bad file type",'pictures'=>[]]);
                     return;
                 }
                 
@@ -167,7 +167,7 @@ class Item extends \app\core\Controller {
                 $filepath = $this->folder.$filename;
 
                 if($_FILES['newPicture']['size'] > 4000000){
-                     $this->view('Admin/index', ['error'=>"File too large",'pictures'=>[]]);
+                     $this->view('Admin/Prospective/addProspectiveItem', ['error'=>"File too large",'pictures'=>[]]);
                      return;
                 }
                 if(move_uploaded_file($_FILES['newPicture']['tmp_name'], $filepath)){
@@ -175,6 +175,7 @@ class Item extends \app\core\Controller {
                     $item->item_name = $_POST['item_name'];
                     $item->type = "prospective";
                     $item->item_description = $_POST['item_description'];
+                    $item->vote_count = '0';
 		            $item->goal = $_POST['goal'];
                     $item->item_price = $_POST['item_price'];
                     $item->filename = "/".$this->folder.$filename;
@@ -208,7 +209,7 @@ class Item extends \app\core\Controller {
                 if($check !== false && isset($mime_type_to_extension[$check['mime']])){
                     $extension = $mime_type_to_extension[$check['mime']];
                 }else{
-                    $this->view('Admin/index', ['error'=>"Bad file type",'pictures'=>[]]);
+                    $this->view('Admin/Prospective/editProspectiveItem', ['error'=>"Bad file type",'item'=>$item]);
                     return;
                 }
                 
@@ -216,7 +217,7 @@ class Item extends \app\core\Controller {
                 $filepath = $this->folder.$filename;
 
                 if($_FILES['newPicture']['size'] > 4000000){
-                     $this->view('Admin/index', ['error'=>"File too large",'pictures'=>[]]);
+                     $this->view('Admin/Prospective/editProspectiveItem', ['error'=>"File too large",'item'=>$item]);
                      return;
                 }
                 if(move_uploaded_file($_FILES['newPicture']['tmp_name'], $filepath)){
@@ -245,7 +246,7 @@ class Item extends \app\core\Controller {
             }
 
         }else //1 present a form to the user
-            $this->view('Admin/Prospective/editProspectiveItem', ['item'=>$item]);
+            $this->view('Admin/Prospective/editProspectiveItem', ["error" => "", 'item'=>$item]);
     }
 	
 	public function deleteProspectiveItem($item_id) {

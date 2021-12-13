@@ -117,7 +117,7 @@
                                 foreach ($data as $currentProspective) {
                                     if ($vote->getVote($_SESSION["user_id"], $currentProspective->item_id)) {
                                         if ($currentProspective->vote_count == $currentProspective->goal) {
-                                            $voteOrUnvoteHref = "<a href='/Vote/vote/$currentProspective->item_id' id='votebutton' class='btn btn-success disabled'>Item will be added to menu!</a>";
+                                            $voteOrUnvoteHref = "<a href='/Vote/vote/$currentProspective->item_id' id='votebutton' class='btn btn-success disabled'>Item will be added to the menu!</a>";
                                         } else {
                                             $voteOrUnvoteHref = "<a href='/Vote/vote/$currentProspective->item_id' id='votebutton' class='btn btn-info'>Vote</a>";
                                         }
@@ -137,6 +137,11 @@
                                         <h5 id='description'>Description:</h5>
                                         <p style='word-wrap: break-word;'>
                                             $currentProspective->item_description
+                                        </p>
+
+                                        <h5 id='description'>Price:</h5>
+                                        <p style='word-wrap: break-word;'>
+                                            $$currentProspective->item_price
                                         </p>
                                     </td>
 

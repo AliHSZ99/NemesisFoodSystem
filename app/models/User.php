@@ -77,7 +77,7 @@ class User extends \app\core\Model {
 
     // method to search for customers
     public function searchCustomer($search_term) {
-        $SQL = "SELECT * FROM user WHERE username LIKE :search_term and `email` LIKE :search_term AND role = 'customer'";
+        $SQL = "SELECT * FROM user WHERE (username LIKE :search_term OR `email` LIKE :search_term) AND role = 'customer'";
         $STMT = self::$_connection->prepare($SQL);
         $STMT->execute(array(':search_term' => '%' . $search_term . '%'));
         $STMT->setFetchMode(\PDO::FETCH_CLASS, "app\\models\\User");

@@ -117,7 +117,7 @@
                                 foreach($data as $results) {
                                 echo " <tr> 
                                             <td>
-                                                <img src='$results->filename' style='width:150px; height: 120px;'>
+                                                <img src='$results->filename' style='width:120px; height: 120px;'>
                                             </td>
                                             <td style='word-wrap:break-word'>$results->item_name</td>
                                             <td style='word-wrap:break-word'>$results->item_description</td>

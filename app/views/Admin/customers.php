@@ -98,7 +98,7 @@
                     </tr>
                 </table>
 
-                <div class="row overflow-auto" style="width: 62%; height: 70%; margin-left: 24.1%">
+                <div class="row overflow-auto" style="width: 62%; height: 60%; margin-left: 24.1%">
                     <div class="">
                         <table class="table table-light table-hover " style="table-layout: fixed; width: 100%;">
                             <tr class="table-secondary">

@@ -105,7 +105,7 @@
                                     <h4> Price</h4>
                                 </div>
                                 <div>
-                                    <h4> Goals</h4>
+                                    <h4> Goal</h4>
                                 </div>  
                             </div>
                         </div>
@@ -131,6 +131,13 @@
                     </div>
                 </form>
             </div>
+            <center>
+                <h3 style="color:red;">
+                <?php
+                    echo $data["error"];
+                ?>
+                </h3>
+            </center>
         </div>
     </div>
 

@@ -127,10 +127,17 @@
                     
                     <br><br>
                     <div style="margin-left: 90%">
-                        <input type='submit' name='action' value='Post' class="btn btn-success">
+                        <input type='submit' name='action' value='Add' class="btn btn-success">
                     </div> 
                 </form>
             </div>
+            <center>
+                <h3 style="color:red;">
+                <?php
+                    echo $data["error"];
+                ?>
+                </h3>
+            </center>
         </div>
     </div>
 

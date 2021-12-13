@@ -91,7 +91,7 @@
                         <div class="row">
                             <div class="col-12 d-flex flex-row" style="margin-left: 5%">
                                 <div style="width: 40%">
-                                     <h4> Menu Item Name</h4>
+                                     <h4> Cleaning Supply Name</h4>
                                 </div>
                                 <div style="width: 20%">
                                     <h4> Price</h4>
@@ -119,7 +119,7 @@
                     
                     <br><br>
                     <div style="margin-left: 90%">
-                        <input type='submit' name='action' value='Post' class="btn btn-success">
+                        <input type='submit' name='action' value='Add' class="btn btn-success">
                     </div> 
                 </form>
             </div>

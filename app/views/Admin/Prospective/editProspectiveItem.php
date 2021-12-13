@@ -67,10 +67,10 @@
                         <div class="row">
                             <div class="col-12 d-flex flex-row" style="margin-left: 5%;">
                                 <div style="width: 40%;">
-                                    <h4> Add Image</h4>
+                                    <h4>Change Image</h4>
                                 </div>
                                 <div>
-                                    <h4> Description</h4>
+                                    <h4>Edit Description</h4>
                                 </div>
                             </div>
                         </div>
@@ -99,13 +99,13 @@
                         <div class="row">
                             <div class="col-12 d-flex flex-row" style="margin-left: 5%">
                                 <div style="width: 40%">
-                                     <h4> Prospective Item Name</h4>
+                                     <h4>Edit Prospective Item Name</h4>
                                 </div>
                                 <div style="width: 20%">
-                                    <h4> Price</h4>
+                                    <h4>Edit Price</h4>
                                 </div>
                                 <div>
-                                    <h4> Goals</h4>
+                                    <h4>Edit Goal</h4>
                                 </div>  
                             </div>
                         </div>
@@ -131,6 +131,13 @@
                     </div>
                 </form>
             </div>
+            <center>
+                <h3 style="color:red;">
+                <?php
+                    echo $data["error"];
+                ?>
+                </h3>
+            </center>
         </div>
     </div>
 

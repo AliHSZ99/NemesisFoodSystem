@@ -83,7 +83,7 @@
                         <div class="row">
                             <div class="col-12 d-flex flex-row" style="margin-left: 5%;">
                                 <div>
-                                    <h4> Description</h4>
+                                    <h4>Edit Description</h4>
                                 </div>
                             </div>
                         </div>
@@ -105,13 +105,13 @@
                         <div class="row">
                             <div class="col-12 d-flex flex-row" style="margin-left: 5%">
                                 <div style="width: 40%">
-                                     <h4> Menu Item Name</h4>
+                                     <h4> Edit Ingredient Name</h4>
                                 </div>
                                 <div style="width: 20%">
-                                    <h4> Price</h4>
+                                    <h4> Edit Price</h4>
                                 </div>
                                 <div style="width: 20%">
-                                    <h4> Quantity</h4>
+                                    <h4> Edit Quantity</h4>
                                 </div> 
                             </div>
                         </div>
@@ -119,13 +119,13 @@
                         <div class="row">
                             <div class="col-12 d-flex flex-row" style="margin-left: 5%">
                                 <div style="width: 40%">
-                                     <input value = <?php echo $name?> required type="text" name="item_name" style="width: 60%;">
+                                     <input value="<?php echo $name?>" required type="text" name="item_name" style="width: 60%;">
                                 </div>
                                 <div style="width: 20%">
-                                    <input value = <?php echo $price?> required type="number" min="0" step=".01" name="item_price" style="width: 30%;">
+                                    <input value="<?php echo $price?>" required type="number" min="0" step=".01" name="item_price" style="width: 30%;">
                                 </div>
                                 <div style="width: 20%">
-                                    <input value = <?php echo $quantity?> required type="number" min="0" name="item_quantity" style="width: 35%;">
+                                    <input value="<?php echo $quantity?>" required type="number" min="0" name="item_quantity" style="width: 35%;">
                                 </div>
                             </div>
                         </div>
@@ -133,7 +133,7 @@
                     
                     <br><br>
                     <div style="margin-left: 90%">
-                        <input type='submit' name='action' value='Post' class="btn btn-success">
+                        <input type='submit' name='action' value='Save' class="btn btn-success">
                     </div> 
                 </form>
             </div>

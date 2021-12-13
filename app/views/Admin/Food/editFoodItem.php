@@ -67,10 +67,10 @@
                         <div class="row">
                             <div class="col-12 d-flex flex-row" style="margin-left: 5%;">
                                 <div style="width: 40%;">
-                                    <h4> Add Image</h4>
+                                    <h4> Change Image</h4>
                                 </div>
                                 <div>
-                                    <h4> Description</h4>
+                                    <h4> Edit Description</h4>
                                 </div>
                             </div>
                         </div>
@@ -99,13 +99,13 @@
                         <div class="row">
                             <div class="col-12 d-flex flex-row" style="margin-left: 5%">
                                 <div style="width: 40%">
-                                     <h4> Prospective Item Name</h4>
+                                     <h4> Edit Prospective Item Name</h4>
                                 </div>
                                 <div style="width: 20%">
-                                    <h4> Price</h4>
+                                    <h4> Edit Price</h4>
                                 </div>
                                 <div style="width: 20%">
-                                    <h4> Quantity</h4>
+                                    <h4> Edit Quantity</h4>
                                 </div> 
                             </div>
                         </div>
@@ -113,13 +113,13 @@
                         <div class="row">
                             <div class="col-12 d-flex flex-row" style="margin-left: 5%">
                                 <div style="width: 40%">
-                                    <input required type="text" name="item_name" value="<?php echo $data['item']->item_name; ?>" style="width: 60%;">
+                                    <input required type="text" name="item_name" value="<?php echo $data['item']->item_name; ?>"  style="width: 60%;" required>
                                 </div>
                                 <div style="width: 20%">
-                                    <input required type="number" min="0" step=".01" name="item_price" value="<?php echo $data['item']->item_price; ?>" style="width: 40%;">
+                                    <input required type="number" min="0" step=".01" name="item_price" value="<?php echo $data['item']->item_price; ?>" style="width: 40%;" required>
                                 </div>
                                 <div style="width: 20%">
-                                    <input required type="number" min="0" name="item_quantity" value="<?php echo $data['item']->item_quantity; ?>" style="width: 50%;">
+                                    <input required type="number" min="0" name="item_quantity" value="<?php echo $data['item']->item_quantity; ?>" style="width: 50%;" required>
                                 </div>
                             </div>
                         </div>
@@ -131,6 +131,13 @@
                     </div>
                 </form>
             </div>
+            <center>
+                <h3 style="color:red;">
+                <?php
+                    echo $data["error"];
+                ?>
+                </h3>
+            </center>
         </div>
     </div>
 

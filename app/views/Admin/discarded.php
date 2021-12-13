@@ -84,7 +84,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-12 d-flex flex-row" style="margin-top: 5%;">
-                    <a href="<?=BASE?>Item/resetDiscard" class="btn btn-success" style="margin-left: 85%; margin-right: 2%; vertical-align: middle;">Reset</a>
+                    <a href="<?=BASE?>Item/resetDiscard" class="btn btn-danger" style="margin-left: 85%; margin-right: 2%; vertical-align: middle;">Clear all</a>
                     <button class="btn btn-outline-light" onclick="printDiscarded()">Print</button>
                 </div>
             </div>

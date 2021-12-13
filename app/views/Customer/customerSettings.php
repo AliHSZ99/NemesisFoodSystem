@@ -90,7 +90,7 @@
             <script>
                 swal({
                     title: "Feedback Sent",
-                    text: "Thank you!, your feedback has been sent to us!",
+                    text: "Thank you! Your feedback has been sent to us!",
                     icon: "success",
                     button:"ok"
                     });
